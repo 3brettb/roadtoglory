@@ -1,0 +1,19 @@
+For each year:
+    - Remove previous weekly stats, grab past years season stats for players: set_past_stats.php
+    - Grab a list of active players for that year to find new players and remove retired ones: update_player_list.php
+    - Update Pre-Draft rankings prior to draft: update_draft_rankings.php
+    - Update Information for each player: update_player_info.php
+
+For each week:
+    Daily:
+        - Update Projected  Stats for a player as well as injuryGameStatus: update_projected.php
+
+    Weekly-End:
+        - Update Stats for week, set week to inactive, set new week to active.
+
+For Each Game:
+    When a game starts, store it in active_games and record updates for players every 5 minutes. When the game conclues, remove it from active_games and then grab full stats
+    
+    - Set game to active, set players to active for week: start_game.php
+    - Record Stat updates every 5 minutes: update_game.php
+    - Set game to inactive, set players to inactive for week, grab all stats for game: end_game.php 
