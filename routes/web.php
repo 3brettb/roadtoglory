@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/test', function(){
+    include_once(app_path().'\..\resources\assets\php\system\tasks.php');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
