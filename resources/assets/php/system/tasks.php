@@ -21,6 +21,7 @@
         if($task_next < $now){
             $task_total++;
             try{
+                $task_data = json_decode($task->data);
                 include_once($task->name);
                 set_next($task, $task_next, substr($task->period, 0, 1), substr($task->period, 1));
             } catch(Exception $e) {
@@ -56,6 +57,9 @@
                 break;
             case "Y":
                 $task->next = $carbon->addYears($value)->format('Y-m-d h:i:s');
+                break;
+            case "0":
+            default:
                 break;
         }
         $task->save();
