@@ -15,7 +15,7 @@ class Player extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'esbid', 'gsisPlayerId', 'name', 'firstname', 'lastname', 'position', 'teamAbbr', 'injuryGameStatus', 'jerseyNumber'
+        'id', 'esbid', 'gsisPlayerId', 'name', 'firstname', 'lastname', 'position', 'teamAbbr', 'status', 'injuryGameStatus', 'jerseyNumber'
     ];
 
     public function notes(){
@@ -24,6 +24,10 @@ class Player extends Model
 
     public function research(){
         return $this->hasOne(Research::class);
+    }
+
+    public function advanced(){
+        return $this->hasOne(Advanced::class);
     }
 
 }
