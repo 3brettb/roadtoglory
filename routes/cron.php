@@ -21,6 +21,10 @@ Route::get('/alive', function(){
     include_once(app_path().'/../resources/assets/php/system/test_cron.php');
 });
 
+/*
+ * Daily Updates
+ */
+
 Route::get('/notes', function(){
     include_once(app_path().'/../resources/assets/php/system/daily/update_notes.php');
 });
@@ -29,6 +33,14 @@ Route::get('/research', function(){
     include_once(app_path().'/../resources/assets/php/system/daily/update_research.php');
 });
 
+/*
+ * Weekly Updates
+ */
+
+Route::get('/advanced', function(){
+    include_once(app_path().'/../resources/assets/php/system/weekly/update_advanced.php');
+});
+
 Route::get('/player/list', function(){
-    include_once(app_path().'/../resources/assets/php/system/yearly/update_player_list.php');
+    include_once(app_path().'/../resources/assets/php/system/weekly/update_player_list.php');
 });
