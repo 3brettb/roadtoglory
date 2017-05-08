@@ -39,6 +39,8 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
+        $this->mapCronRoutes();
+
         //
     }
 
@@ -69,5 +71,20 @@ class RouteServiceProvider extends ServiceProvider
              ->middleware('api')
              ->namespace($this->namespace)
              ->group(base_path('routes/api.php'));
+    }
+
+    /**
+     * Define the "cron" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapCronRoutes()
+    {
+        Route::prefix('cron')
+            ->middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/cron.php'));
     }
 }

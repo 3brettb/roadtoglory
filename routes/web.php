@@ -16,7 +16,11 @@ Route::get('/', function () {
 });
 
 Route::get('/test', function(){
-    include_once(app_path().'\..\resources\assets\php\system\tasks.php');
+    //include_once(app_path().'\..\resources\assets\php\system\tasks.php');
+});
+
+Route::get('/php', function(){
+   //phpinfo();
 });
 
 Auth::routes();
