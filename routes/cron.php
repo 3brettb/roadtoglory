@@ -24,3 +24,7 @@ Route::get('/alive', function(){
 Route::get('/notes', function(){
     include_once(app_path().'/../resources/assets/php/system/daily/update_notes.php');
 });
+
+Route::get('/research', function(){
+    include_once(app_path().'/../resources/assets/php/system/daily/update_research.php');
+});
