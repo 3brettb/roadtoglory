@@ -5,8 +5,10 @@ namespace App\ResourceModels\Players;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
-class Player extends Model
+class Note extends Model
 {
+    public $timestamps = false;
+
     protected $connection = 'players';
 
     /**
@@ -15,11 +17,11 @@ class Player extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'esbid', 'gsisPlayerId', 'name', 'firstname', 'lastname', 'position', 'teamAbbr', 'injuryGameStatus', 'jerseyNumber'
+        'timestamp', 'source', 'headline', 'body', 'analysis', 'player_id'
     ];
 
-    public function notes(){
-        return $this->hasMany(Note::class);
+    public function player(){
+        return $this->hasOne(Player::class);
     }
 
 }
