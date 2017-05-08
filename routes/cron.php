@@ -28,3 +28,7 @@ Route::get('/notes', function(){
 Route::get('/research', function(){
     include_once(app_path().'/../resources/assets/php/system/daily/update_research.php');
 });
+
+Route::get('/player/list', function(){
+    include_once(app_path().'/../resources/assets/php/system/yearly/update_player_list.php');
+});
