@@ -1,11 +1,8 @@
 #! /usr/bin/php
 <?php
 
-    use \App\ResourceModels\System\Cron;
+    include_once(app_path().'\Helpers\System\system.php');
 
-    $up = new Cron();
-    $up->script = "test_cron.php";
-    $up->info = "Cron Alive";
-    $up->save();
+    add_cron("/test_cron.php", "Cron Alive");
     
 ?>
