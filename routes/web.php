@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    Redirect::to('/home');
 });
 
 Route::get('/test', function(){
@@ -25,4 +25,8 @@ Route::get('/php', function(){
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+/*
+ * Page Routes
+ */
+Route::get('/home', 'PageController@home')->name('home');
+Route::get('/profile', 'PageController@profile')->name('profile');
