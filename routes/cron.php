@@ -14,7 +14,8 @@
 */
 
 Route::get('/test', function(){
-    echo "cron routes test";
+    $data = json_decode(file_get_contents("http://api.fantasy.nfl.com/v1/players/editordraftranks?format=json"));
+    dd($data);
 });
 
 Route::get('/alive', function(){
@@ -37,6 +38,10 @@ Route::get('/details', function(){
     include_once(app_path().'/../resources/assets/php/system/daily/update_details.php');
 });
 
+Route::get('/draftrankings', function(){
+    include_once(app_path().'/../resources/assets/php/system/daily/update_draft_rankings.php');
+});
+
 /*
  * Weekly Updates
  */
@@ -48,3 +53,9 @@ Route::get('/advanced', function(){
 Route::get('/list', function(){
     include_once(app_path().'/../resources/assets/php/system/weekly/update_player_list.php');
 });
+
+/*
+ * Custom Updates
+ */
+
+ //

@@ -34,4 +34,8 @@ class Player extends Model
         return $this->hasMany(Details::class);
     }
 
+    public function draftranking(){
+        return $this->hasOne(DraftRanking::class);
+    }
+
 }
