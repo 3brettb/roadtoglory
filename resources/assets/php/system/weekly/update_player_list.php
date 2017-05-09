@@ -1,8 +1,4 @@
 <?php
-    //Get list of players for given season
-    //Use player rankings to parse through active players for that year.
-
-    include_once(app_path().'\Helpers\System\system.php');
 
     use \App\ResourceModels\Players\Setting;
     use \App\ResourceModels\Players\Season;

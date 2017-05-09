@@ -1,9 +1,6 @@
 #! usr/bin/php
 <?php
 
-    include_once(app_path().'\Helpers\System\system.php');
-    include_once(app_path().'\Helpers\Players\players.php');
-
     use \App\ResourceModels\Players\Setting;
 
     $start = 0;
