@@ -1,0 +1,63 @@
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+  margin-top: -100;
+  display: flex;
+  align-items: center;
+}
+
+.fa-large {
+  font-size: 25px;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.text-white{
+  color: white;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.highlighted{
+  background-color: lightyellow;
+}
+
+.center-player-img{
+  width: 70%;
+}
+
+hr.small {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.btn-small{
+  border: none;
+  width: 70px;
+  height: 20px;
+  padding: 0px 10px;
+  font-size: 12px;
+}
+
+.btn-invalid,
+.btn-locked{
+  cursor: default;
+  background-color: gray;
+  color: white;
+}
+
+.btn-invalid:hover,
+.btn-invalid:focus,
+.btn-invalid:visited,
+.btn-invalid:active,
+.btn-locked:hover,
+.btn-locked:focus,
+.btn-locked:visited,
+.btn-locked:active {
+  background-color: gray !important;
+  color: white !important;
+}
