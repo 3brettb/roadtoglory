@@ -33,6 +33,10 @@ Route::get('/research', function(){
     include_once(app_path().'/../resources/assets/php/system/daily/update_research.php');
 });
 
+Route::get('/details', function(){
+    include_once(app_path().'/../resources/assets/php/system/daily/update_details.php');
+});
+
 /*
  * Weekly Updates
  */
@@ -41,6 +45,6 @@ Route::get('/advanced', function(){
     include_once(app_path().'/../resources/assets/php/system/weekly/update_advanced.php');
 });
 
-Route::get('/player/list', function(){
+Route::get('/list', function(){
     include_once(app_path().'/../resources/assets/php/system/weekly/update_player_list.php');
 });

@@ -20,7 +20,7 @@
                 if($player = player_exists($p)){
                     $stats = $p->stats;
                     $player->update([
-                        'status' => $p->status,
+                        'gamestatus' => $p->status,
                     ]);
                     $player->advanced()->updateOrCreate([], [
                         'carries' => $stats->Carries,

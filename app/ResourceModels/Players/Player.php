@@ -15,7 +15,7 @@ class Player extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'esbid', 'gsisPlayerId', 'name', 'firstname', 'lastname', 'position', 'teamAbbr', 'status', 'injuryGameStatus', 'jerseyNumber'
+        'id', 'esbid', 'gsisPlayerId', 'name', 'firstname', 'lastname', 'position', 'teamAbbr', 'status', 'gamestatus', 'injuryGameStatus', 'jerseyNumber'
     ];
 
     public function notes(){
@@ -28,6 +28,10 @@ class Player extends Model
 
     public function advanced(){
         return $this->hasOne(Advanced::class);
+    }
+
+    public function details(){
+        return $this->hasMany(Details::class);
     }
 
 }
