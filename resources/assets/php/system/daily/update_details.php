@@ -23,6 +23,15 @@
                 'injuryGameStatus' => $d->injuryGameStatus,
                 'jerseyNumber' => $d->jerseyNumber,
             ]);
+            foreach($d->notes as $note){
+                $player->notes()->updateOrCreate([
+                    'timestamp' => $note->timestamp,
+                    'source' => $note->source,
+                    'headline' => $note->headline,
+                    'body' => $note->body,
+                    'analysis' => $note->analysis,
+                ]);
+            }
             foreach($d->weeks as $week){
                 $player->details()->updateOrCreate([
                     'week' => $week->id,
