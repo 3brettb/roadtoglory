@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'firstname', 'lastname', 'email', 'phone', 'password', 'status',
+        'firstname', 'lastname', 'email', 'phone', 'password', 'status', 'active_team_id',
     ];
 
     /**
@@ -35,5 +35,13 @@ class User extends Authenticatable
 
     public function teams(){
         return $this->hasMany(Team::class);
+    }
+
+    public function team(){
+        return $this->hasOne(Team::class, 'id', 'active_team_id');
+    }
+
+    public function displayname(){
+        return "$this->firstname $this->lastname";
     }
 }

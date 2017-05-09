@@ -31,4 +31,8 @@ class Team extends Model
     public function league(){
         return $this->belongsTo(League::class);
     }
+
+    public function displayname(){
+        return "$this->name $this->mascot";
+    }
 }

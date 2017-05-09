@@ -8,7 +8,7 @@
         <li class="user-header">
             <img src='{{ URL::asset("img/default_user.jpg") }}' class="img-circle" alt="User Image">
             <p>
-                [User Name] - [User Team]
+                {{auth()->user()->displayname()}} - {{auth()->user()->team->displayname()}}
                 <small>[Season] | [Record] | [Standing]</small>
             </p>
         </li>
