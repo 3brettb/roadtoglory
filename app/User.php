@@ -32,4 +32,8 @@ class User extends Authenticatable
             $model->status = "Offline";
         });
     }
+
+    public function teams(){
+        return $this->hasMany(Team::class);
+    }
 }
