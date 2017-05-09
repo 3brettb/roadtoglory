@@ -9,7 +9,7 @@
         </div>
         <div class="pull-left info">
             <p>Team Name Here</p>
-            <a><i class="fa fa-circle bg-green"></i> {{auth()->user()->status}}</a>
+            <a><i class="fa fa-circle {{(auth()->user()->status == 'Online') ? 'text-green' : 'text-red'}}"></i> {{auth()->user()->status}}</a>
         </div>
         </div>
         <!-- sidebar menu: : style can be found in sidebar.less -->

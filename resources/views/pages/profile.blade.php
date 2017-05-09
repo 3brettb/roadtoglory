@@ -17,8 +17,8 @@
         <div class="row">
             <div class="col-sm-3" style="border-right: 1px solid lightgrey;">
                 <div class="list-group">
-                    <a href="#" data-fill="overview" class="list-group-item active">Overview</a>
-                    <a href="#" data-fill="account_settings" class="list-group-item list-group-item-action">Account Settings</a>
+                    <a href="#overview" class="list-group-item">Overview</a>
+                    <a href="#account_settings" class="list-group-item list-group-item-action">Account Settings</a>
                 </div>
             </div>
             <div id="dynamic-page-content" class="col-sm-9"></div>
@@ -37,29 +37,23 @@
 
 @push('bottom-scripts')
     $(document).ready(function() {
+        loc = (window.location.hash == "") ? "#overview" : window.location.hash;
+        window.location.hash = loc;
+        $(loc).addClass('active');
+        fill();
+    });
+    
+    $("a.list-group-item").on('click', function(item){
+        $("a.list-group-item.active").removeClass("active");
+        $(this).addClass("active");
+    });
+
+    $(window).on('hashchange', function(){
         fill();
     });
 
     function fill(){
-        content = $("#dynamic-page-content")[0];
-        active = getactive();
-        data_id = $(active).data('fill');
-        new_data = $(getdata(data_id)).html();
-        $(content).html(new_data);
+        $($("#dynamic-page-content")[0]).html($(window.location.hash).html());
     }
-
-    function getactive(){
-        return $(".list-group-item.active")[0];
-    }
-
-    function getdata(id){
-        return $("#"+id)[0];
-    }
-    
-    $("a.list-group-item").on('click', function(item){
-        $(getactive()).removeClass("active");
-        $(this).addClass("active");
-        fill();
-    });
 
 @endpush
