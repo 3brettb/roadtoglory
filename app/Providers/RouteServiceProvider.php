@@ -41,6 +41,8 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapCronRoutes();
 
+        $this->mapActionRoutes();
+
         //
     }
 
@@ -86,5 +88,20 @@ class RouteServiceProvider extends ServiceProvider
             ->middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/cron.php'));
+    }
+
+    /**
+     * Define the "action" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapActionRoutes()
+    {
+        Route::prefix('action')
+            ->middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/actions.php'));
     }
 }
