@@ -9,9 +9,9 @@
 @endsection
 
 @section('breadcrumb')
-    League Dashboard
+    <li class="active">League Dashboard</li>
 @endsection
 
 @section('content')
-    
+
 @endsection
