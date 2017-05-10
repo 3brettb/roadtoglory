@@ -14,7 +14,14 @@
 
 @section('content')
     <section class="content">
-        <table id="table"></table>
+        <div id="playertable-toolbar"></div>
+        <table id="playertable"
+            data-toolbar="#playertable-toolbar"
+            data-search="true"
+            data-pagination="true"
+            data-show-columns="true"
+            data-page-list="[10, 25, 50, 100, ALL]">
+        </table>
     </section>
 @endsection
 
@@ -23,25 +30,36 @@
 @endpush
 
 @push('bottom-scripts')
-    $('#table').bootstrapTable({
+    $('#playertable').bootstrapTable({
         columns: [{
+            field: 'checked',
+            checkbox: true,
+            align: 'center',
+            valign: 'middle',
+        }, {
             field: 'firstname',
-            title: 'First'
+            title: 'First',
+            sortable: true,
         }, {
             field: 'lastname',
-            title: 'Last'
+            title: 'Last',
+            sortable: true,
         }, {
             field: 'position',
-            title: 'POS'
+            title: 'POS',
+            sortable: true,
         }, {
             field: 'teamAbbr',
-            title: 'NFL'
+            title: 'NFL',
+            sortable: true,
         }, {
             field: 'owner',
-            title: 'Team'
+            title: 'Team',
+            sortable: true,
         }, {
             field: 'status',
-            title: 'Status'
+            title: 'Status',
+            sortable: true,
         }],
         data: [
             @foreach($players as $player)
@@ -49,6 +67,14 @@
             @endforeach
         ]
     });
+
+    function userActionFormatter(value, row, index){
+        return [
+            '<a class="actionbtn btn btn-primary" href="javascript:void(0)">',
+            'Action',
+            '</a>'
+        ].join('');
+    }
 @endpush
 
 @section('head-script')
