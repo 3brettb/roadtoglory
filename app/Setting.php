@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class League extends Model
+class Setting extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -12,7 +12,7 @@ class League extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'user_id',
+        'league_id', 'name', 'description', 'value', 'data',
     ];
 
     /**
@@ -24,15 +24,11 @@ class League extends Model
         
     ];
 
-    public function owner(){
-        return $this->belongsTo(User::class);
+    public function league(){
+        return $this->belongsTo(League::class);
     }
 
-    public function teams(){
-        return $this->hasMany(Team::class);
-    }
-
-    public function settings(){
-        return $this->hasMany(Setting::class);
+    public function data(){
+        return ($this->data) ? json_decode($this->data) : null;
     }
 }
