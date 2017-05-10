@@ -14,6 +14,7 @@
                     <th>Action</th>
                     <th>Slot</th>
                     <th>First, Last, POS Team</th>
+                    <th>Status</th>
                     <th>Upcoming Week</th>
                     <th>Projected</th>
                     <th>Last</th>
@@ -22,7 +23,21 @@
                 </tr>
             </thead>
             <tbody>
-                
+                @foreach($slots as $pos => $slot)
+                    @for($i=0; $i<$slot['num']; $i++)
+                        <tr>
+                            <td></td>
+                            <td>{{$pos}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    @endfor
+                @endforeach
             </tbody>
         </table>
     </div>
