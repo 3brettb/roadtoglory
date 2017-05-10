@@ -13,26 +13,27 @@
 @endsection
 
 @section('content')
-    <div class="container" style="padding-top: 20px;">
-        <div class="row">
-            <div class="col-sm-3" style="border-right: 1px solid lightgrey;">
-                <div class="list-group">
-                    <a href="#overview" class="list-group-item">Overview</a>
-                    <a href="#account_settings" class="list-group-item list-group-item-action">Account Settings</a>
+    <section class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3" style="border-right: 1px solid lightgrey;">
+                    <div class="list-group">
+                        <a href="#overview" class="list-group-item">Overview</a>
+                        <a href="#account_settings" class="list-group-item list-group-item-action">Account Settings</a>
+                    </div>
                 </div>
+                <div id="dynamic-page-content" class="col-sm-9"></div>
             </div>
-            <div id="dynamic-page-content" class="col-sm-9"></div>
         </div>
-    </div>
 
-    <div id="overview" hidden>
-        @include('pages.profile.overview')
-    </div>
+        <div id="overview" hidden>
+            @include('pages.profile.overview')
+        </div>
 
-    <div id="account_settings" hidden>
-        @include('pages.profile.account')
-    </div>
-
+        <div id="account_settings" hidden>
+            @include('pages.profile.account')
+        </div>
+    </section>
 @endsection
 
 @push('bottom-scripts')
