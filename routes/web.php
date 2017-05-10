@@ -30,3 +30,9 @@ Auth::routes();
  */
 Route::get('/home', 'PageController@home')->name('home');
 Route::get('/profile', 'PageController@profile')->name('profile');
+
+/*
+ * Team Routes
+ */
+Route::get('/standings', 'TeamController@standings')->name('team.standings');
+Route::get('/team/{team}', 'TeamController@show')->name('team.show');
