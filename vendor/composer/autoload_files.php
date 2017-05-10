@@ -17,4 +17,6 @@ return array(
     'ce3c8cecff0d07840e9bb2c604eab3d2' => $baseDir . '/app/Helpers/System/system.php',
     'e70faf5123f85ce1c0919a47ddf9c76f' => $baseDir . '/app/Helpers/Players/players.php',
     'b3e86e465c5868c6c40f7bb41f5334b3' => $baseDir . '/app/Helpers/general.php',
+    'd21d43db5f6e840ee7b10744ec7fdf66' => $baseDir . '/app/Helpers/helpers.php',
+    '098f6f9eed2f302b10c875b2b9b82f17' => $baseDir . '/app/Helpers/team.php',
 );

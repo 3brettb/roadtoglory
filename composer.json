@@ -18,7 +18,9 @@
         "files": [
             "app/Helpers/System/system.php",
             "app/Helpers/Players/players.php",
-            "app/Helpers/general.php"
+            "app/Helpers/general.php",
+            "app/Helpers/helpers.php",
+            "app/Helpers/team.php"
         ],
         "classmap": [
             "database"

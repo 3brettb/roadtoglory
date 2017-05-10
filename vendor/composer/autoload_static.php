@@ -18,6 +18,8 @@ class ComposerStaticInit6dcf44197371086fc6312aa72fdd3e18
         'ce3c8cecff0d07840e9bb2c604eab3d2' => __DIR__ . '/../..' . '/app/Helpers/System/system.php',
         'e70faf5123f85ce1c0919a47ddf9c76f' => __DIR__ . '/../..' . '/app/Helpers/Players/players.php',
         'b3e86e465c5868c6c40f7bb41f5334b3' => __DIR__ . '/../..' . '/app/Helpers/general.php',
+        'd21d43db5f6e840ee7b10744ec7fdf66' => __DIR__ . '/../..' . '/app/Helpers/helpers.php',
+        '098f6f9eed2f302b10c875b2b9b82f17' => __DIR__ . '/../..' . '/app/Helpers/team.php',
     );
 
     public static $prefixLengthsPsr4 = array (
