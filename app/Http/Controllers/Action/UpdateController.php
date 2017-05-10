@@ -37,7 +37,7 @@ class UpdateController extends Controller
         $validator->currentRequest = $request;
 
         $validator->after(function($validator){
-            if(!Hash::check($validator->currentRequest->current, auth()->user()->password)){
+            if(!Hash::check($validator->currentRequest->current, user()->password)){
                 $validator->errors()->add('current', 'The password entered did not match your current password.');
             }
         });
@@ -48,7 +48,7 @@ class UpdateController extends Controller
                 ->withInput();
         }
 
-        auth()->user()->update([
+        user()->update([
             "password" => bcrypt($request->password),
         ]);
 
@@ -64,8 +64,8 @@ class UpdateController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'email' => 'required|email|max:255|unique:users,email,'.auth()->user()->id,
-            'phone' => 'nullable|min:9|max:10|unique:users,phone,'.auth()->user()->id,
+            'email' => 'required|email|max:255|unique:users,email,'.user()->id,
+            'phone' => 'nullable|min:9|max:10|unique:users,phone,'.user()->id,
         ]);
 
         if ($validator->fails()) {
@@ -74,7 +74,7 @@ class UpdateController extends Controller
                 ->withInput();
         }
 
-        auth()->user()->update([
+        user()->update([
             "email" => $request->email,
             "phone" => $request->phone,
         ]);
