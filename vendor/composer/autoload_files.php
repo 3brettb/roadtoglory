@@ -16,4 +16,5 @@ return array(
     '58571171fd5812e6e447dce228f52f4d' => $vendorDir . '/laravel/framework/src/Illuminate/Support/helpers.php',
     'ce3c8cecff0d07840e9bb2c604eab3d2' => $baseDir . '/app/Helpers/System/system.php',
     'e70faf5123f85ce1c0919a47ddf9c76f' => $baseDir . '/app/Helpers/Players/players.php',
+    'b3e86e465c5868c6c40f7bb41f5334b3' => $baseDir . '/app/Helpers/general.php',
 );

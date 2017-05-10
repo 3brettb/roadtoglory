@@ -17,7 +17,8 @@
     "autoload": {
         "files": [
             "app/Helpers/System/system.php",
-            "app/Helpers/Players/players.php"
+            "app/Helpers/Players/players.php",
+            "app/Helpers/general.php"
         ],
         "classmap": [
             "database"
