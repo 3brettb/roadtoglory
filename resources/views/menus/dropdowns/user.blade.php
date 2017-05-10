@@ -1,14 +1,14 @@
 <li class="dropdown user user-menu">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
         <img src='{{ URL::asset("img/default_user.jpg") }}' class="user-image" alt="User Image">
-        <span class="hidden-xs">{{auth()->user()->firstname}} {{auth()->user()->lastname}}</span>
+        <span class="hidden-xs">{{user()->firstname}} {{user()->lastname}}</span>
     </a>
     <ul class="dropdown-menu">
         <!-- User image -->
         <li class="user-header">
             <img src='{{ URL::asset("img/default_user.jpg") }}' class="img-circle" alt="User Image">
             <p>
-                {{auth()->user()->displayname()}} - {{auth()->user()->team->displayname()}}
+                {{team()->displayname()}} - {{team()->displayname()}}
                 <small>[Season] | [Record] | [Standing]</small>
             </p>
         </li>
@@ -16,7 +16,7 @@
         <li class="user-body">
             <div class="row">
                 <div class="col-xs-12 text-center">
-                <a href=''>[Team Name] Team Page</a>
+                <a href='{{url("/team/".team()->id)}}'>{{team()->displayname()}} Team Page</a>
                 </div>
             </div>
             <!-- /.row -->
