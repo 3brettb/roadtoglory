@@ -36,3 +36,9 @@ Route::get('/profile', 'PageController@profile')->name('profile');
  */
 Route::get('/standings', 'TeamController@standings')->name('team.standings');
 Route::get('/team/{team}', 'TeamController@show')->name('team.show');
+
+/*
+ * Team Routes
+ */
+Route::get('/players', 'PlayerController@index')->name('players.index');
+Route::get('/players/{player}', 'PlayerController@show')->name('players.show');

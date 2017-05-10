@@ -20,31 +20,9 @@
         </div>
         <!-- /.col -->
         <div class="col-md-9">
-            @include('team.partials.player_box', [
-                    'team' => $team, 
-                    'title' => 'Starters', 
-                    'tableid' => 
-                    'starterstable', 
-                    'players' => null, 
-                    'slots' => get_starter_slots(), 
-                    'offset' => get_starter_offset()
-            ])
-            @include('team.partials.player_box', [
-                    'team' => $team, 
-                    'title' => 'Bench', 
-                    'tableid' => 'benchtable', 
-                    'players' => null, 
-                    'slots' => get_bench_slots(), 
-                    'offset' => get_bench_offset()
-            ])
-            @include('team.partials.player_box', [
-                    'team' => $team, 
-                    'title' => 'Injury Reserve', 
-                    'tableid' => 'irtable', 
-                    'players' => null, 
-                    'slots' => get_ir_slots(), 
-                    'offset' => get_ir_offset()
-            ])
+            @include('team.partials.player_box_starter', ['team' => $team])
+            @include('team.partials.player_box_bench', ['team' => $team])
+            @include('team.partials.player_box_ir', ['team' => $team])
         </div>
         <!-- /.col -->
       </div>

@@ -38,4 +38,16 @@ class Player extends Model
         return $this->hasOne(DraftRanking::class);
     }
 
+    public function fulldisplay(){
+        return "$this->firstname, $this->lastname, $this->position $this->teamAbbr";
+    }
+
+    public function displayname(){
+        return "$this->firstname $this->lastname";
+    }
+
+    public function status(){
+        return $this->status;
+    }
+
 }

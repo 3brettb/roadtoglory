@@ -33,7 +33,7 @@
 
             @include('menus.dropdowns.teams', ['teams' => teams()])
             
-            @component('components.sidebar_item', ['id' => 'players', 'link' => '/player'])
+            @component('components.sidebar_item', ['id' => 'players', 'link' => '/players'])
                 <i class="fa fa-male"></i> <span>Players</span>
             @endcomponent
 

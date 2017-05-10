@@ -1,6 +1,6 @@
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title">{{$title}}</h3>
+        <h3 class="box-title">Injury Reserve</h3>
         
         <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class="box-body">
-        <table id="startertable" class="display" cellspacing="0" width="100%">
+        <table id="irtable" class="display" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>Action</th>
@@ -23,20 +23,18 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($slots as $pos => $slot)
-                    @for($i=0; $i<$slot['num']; $i++)
-                        <tr>
-                            <td></td>
-                            <td>{{$pos}}</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    @endfor
+                @foreach($team->ir as $r_player)
+                    <tr>
+                        <td></td>
+                        <td>IR</td>
+                        <td><a href="{{url('/players/'.$r_player->player_id)}}">{{$r_player->fulldisplay()}}</a></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
                 @endforeach
             </tbody>
         </table>
