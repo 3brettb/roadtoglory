@@ -45,4 +45,8 @@ class RosterPlayer extends Model
     public function status(){
         return $this->player->status();
     }
+
+    public function playerid(){
+        return $this->player->id;
+    }
 }

@@ -35,7 +35,7 @@
     @yield('head-script')
 
   </head>
-  <body class="hold-transition skin-green sidebar-mini {{(auth()->user()) ? '' : 'sidebar-collapse'}}">
+  <body class="hold-transition skin-blue sidebar-mini {{(auth()->user()) ? '' : 'sidebar-collapse'}}">
     <div class="wrapper">
       @include('menus.menubar')
 

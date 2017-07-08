@@ -41,6 +41,10 @@ class User extends Authenticatable
         return $this->hasOne(Team::class, 'id', 'active_team_id');
     }
 
+    public function league(){
+        return $this->team->league;
+    }
+
     public function displayname(){
         return "$this->firstname $this->lastname";
     }
