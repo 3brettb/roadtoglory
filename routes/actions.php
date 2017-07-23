@@ -14,7 +14,7 @@
 |
 */
 
-//include_once('actionroutes\update.php');
-include_once('actionroutes\chat.php');
 include_once('actionroutes\trade.php');
 include_once('actionroutes\league.php');
+include_once('actionroutes\update.php');
+include_once('actionroutes\chat.php');

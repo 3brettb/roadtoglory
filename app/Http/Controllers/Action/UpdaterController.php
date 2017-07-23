@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Action;
 
 use Validator;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
 
-class UpdateController extends Controller
+class UpdaterController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -18,7 +18,7 @@ class UpdateController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth:api');
     }
 
     /**
