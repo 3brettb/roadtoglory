@@ -43,6 +43,8 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapActionRoutes();
 
+        $this->mapAliasRoutes();
+
         //
     }
 
@@ -103,5 +105,19 @@ class RouteServiceProvider extends ServiceProvider
             ->middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/actions.php'));
+    }
+
+    /**
+     * Define the "action" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapAliasRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/aliases.php'));
     }
 }

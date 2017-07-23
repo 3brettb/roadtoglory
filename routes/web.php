@@ -11,39 +11,30 @@
 |
 */
 
+Auth::routes();
+
 Route::get('/', function () {
     return redirect('/home');
 });
 
-Route::get('/test', function(){
-    //include_once(app_path().'\..\resources\assets\php\system\tasks.php');
-});
+include_once('testing.php');
 
-Route::get('/php', function(){
-   //phpinfo();
-});
+include_once('webroutes\activity.php');
+include_once('webroutes\alert.php');
+include_once('webroutes\chat.php');
+include_once('webroutes\draft.php');
+include_once('webroutes\event.php');
+include_once('webroutes\league.php');
+include_once('webroutes\matchup.php');
+include_once('webroutes\message.php');
+include_once('webroutes\player.php');
+include_once('webroutes\poll.php');
+include_once('webroutes\request.php');
+include_once('webroutes\rule.php');
+include_once('webroutes\season.php');
+include_once('webroutes\team.php');
+include_once('webroutes\trade.php');
+include_once('webroutes\user.php');
+include_once('webroutes\waiver.php');
+include_once('webroutes\week.php');
 
-Auth::routes();
-
-/*
- * Page Routes
- */
-Route::get('/home', 'PageController@home')->name('home');
-Route::get('/profile', 'PageController@profile')->name('profile');
-
-/*
- * Team Routes
- */
-Route::get('/standings', 'TeamController@standings')->name('team.standings');
-Route::get('/team/{team}', 'TeamController@show')->name('team.show');
-
-/*
- * Players Routes
- */
-Route::get('/players', 'PlayerController@index')->name('players.index');
-Route::get('/players/{player}', 'PlayerController@show')->name('players.show');
-
-/*
- * Draft Routes
- */
-Route::resource('/draft', 'DraftController');

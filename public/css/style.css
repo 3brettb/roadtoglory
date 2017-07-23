@@ -1,0 +1,200 @@
+.row.no-margin {
+    margin-left:0;
+    margin-right:0;
+}
+
+.row.no-spacing {
+    margin-top:0;
+    margin-bottom:0;
+}
+
+.actionbar {
+    position: relative;
+    border-radius: 3px;
+    background: #ffffff;
+    border-top: 3px solid #d2d6de;
+    margin-bottom: 20px;
+    width: 100%;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    display: block;
+    padding: 10px;
+}
+
+.actionbar-info{
+    border-top-color: #00c0ef;
+}
+
+.roster-table td {
+    vertical-align: middle !important;
+}
+
+td.divider, th.divider {
+    border-right: 2px solid #f4f4f4;
+}
+
+td.left, th.left {
+    text-align: left;
+}
+
+td.center, th.center {
+    text-align: center;
+}
+
+td.right, th.right {
+    text-align: right;
+}
+
+.gamebox {
+    display: block;
+    background-color: white;
+    border-radius: 2px;
+    padding: 10px 10px;
+}
+
+.action-control {
+    display: inline;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #d2d6de;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.rankings ul, .team-info ul, ul.message-list, .trade-details ul {
+    padding-left: 10px;
+    list-style-type: none;
+}
+
+.rankings .ranking-title {
+    border-bottom: 1px solid black;
+}
+
+ul.message-list .message-content {
+    max-height: 43px;
+    overflow: hidden;
+}
+
+.rankings .ranking-rank::before{
+    content: "# ";
+}
+
+.draft-board .draft-picks .draft-pick-box {
+    padding: 10px 10px;
+}
+
+.draft-board .draft-picks .draft-pick {
+    background-color: #3c8dbc;
+    color: white;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    padding: 5px 5px;
+}
+
+.messages .messages-message, .poll.poll-box {
+    background-color: white;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+hr.no-margin {
+    margin-top: 7px !important;
+    margin-bottom: 7px !important;
+}
+
+.chat-msg:before, .chat-msg:after{
+    content: " ";
+    display: table;
+}
+
+.chat-msg:after{
+    clear: both;
+}
+
+.chat-msg {
+    margin-bottom: 10px;
+}
+
+.chat-msg, .chat-text, .chat-info {
+    display: block;
+}
+
+.chat-info {
+    margin-bottom: 2px;
+    font-size: 12px;
+}
+
+.chat-name {
+    font-weight: 600;
+}
+
+.chat-timestamp {
+    color: #999;
+}
+
+.chat-img {
+    border-radius: 50%;
+    float: left;
+    width: 40px;
+    height: 40px;
+}
+
+.chat-text {
+    border-radius: 5px;
+    position: relative;
+    padding: 5px 10px;
+    background: #d2d6de;
+    border: 1px solid #d2d6de;
+    margin: 5px 0 0 50px;
+    color: #444;
+}
+
+.chat-text:before {
+    border-width: 6px;
+    margin-top: -6px;
+}
+
+.chat-text:after, .chat-text:before {
+    position: absolute;
+    right: 100%;
+    top: 15px;
+    border: solid transparent;
+    border-right-color: #d2d6de;
+    content: ' ';
+    height: 0;
+    width: 0;
+    pointer-events: none;
+}
+
+.chat-text:after {
+    border-width: 5px;
+    margin-top: -5px;
+}
+
+.right .chat-text {
+    margin-right: 50px;
+    margin-left: 0;
+}
+
+.right .chat-text:after, .right .chat-text:before {
+    right: auto;
+    left: 100%;
+    border-right-color: transparent;
+    border-left-color: #d2d6de;
+}
+
+.right .chat-img {
+    float: right;
+}

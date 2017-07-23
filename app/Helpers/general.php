@@ -9,9 +9,9 @@
     }
 
     function league(){
-        return auth()->user()->team->league;
+        return team()->league;
     }
 
     function teams(){
-        return auth()->user()->team->league->teams;
+        return league()->teams;
     }

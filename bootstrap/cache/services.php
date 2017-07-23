@@ -28,6 +28,8 @@
     24 => 'App\\Providers\\AuthServiceProvider',
     25 => 'App\\Providers\\EventServiceProvider',
     26 => 'App\\Providers\\RouteServiceProvider',
+    27 => 'App\\Providers\\ComposerServiceProvider',
+    28 => 'Collective\\Html\\HtmlServiceProvider',
   ),
   'eager' => 
   array (
@@ -45,6 +47,7 @@
     11 => 'App\\Providers\\AuthServiceProvider',
     12 => 'App\\Providers\\EventServiceProvider',
     13 => 'App\\Providers\\RouteServiceProvider',
+    14 => 'App\\Providers\\ComposerServiceProvider',
   ),
   'deferred' => 
   array (
@@ -138,6 +141,10 @@
     'validator' => 'Illuminate\\Validation\\ValidationServiceProvider',
     'validation.presence' => 'Illuminate\\Validation\\ValidationServiceProvider',
     'command.tinker' => 'Laravel\\Tinker\\TinkerServiceProvider',
+    'html' => 'Collective\\Html\\HtmlServiceProvider',
+    'form' => 'Collective\\Html\\HtmlServiceProvider',
+    'Collective\\Html\\HtmlBuilder' => 'Collective\\Html\\HtmlServiceProvider',
+    'Collective\\Html\\FormBuilder' => 'Collective\\Html\\HtmlServiceProvider',
   ),
   'when' => 
   array (
@@ -178,6 +185,9 @@
     array (
     ),
     'Laravel\\Tinker\\TinkerServiceProvider' => 
+    array (
+    ),
+    'Collective\\Html\\HtmlServiceProvider' => 
     array (
     ),
   ),

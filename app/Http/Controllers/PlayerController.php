@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use App\ResourceModels\Players\Player;
+use App\Managers\PlayerManager;
+use App\Models\Player;
 
 class PlayerController extends Controller
 {
@@ -18,26 +18,15 @@ class PlayerController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Show the player index.
-     * index route
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request)
-    {
-        $players = Player::all();
-        return view('players.index')->withPlayers($players);
+    public function index(){
+        return view('dir.player.index')
+            ->withPlayers(\App\Models\Resource\Players\PlayerData::all());
+            //->withPlayers(Player::all());
     }
 
-    /**
-     * Show a given player.
-     * show route
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Player $player)
-    {
-        return view('players.show')->withPlayer($player);
+    public function show($id){
+        return view('dir.player.show')
+            ->withPlayer(\App\Models\Resource\Players\PlayerData::find($id));
+            //->withPlayer(Player::find($id));
     }
 }

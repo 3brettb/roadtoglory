@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use App\Team;
+use App\Managers\TeamManager;
+use App\Models\Team;
 
 class TeamController extends Controller
 {
@@ -18,25 +18,30 @@ class TeamController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Show the league standings.
-     * index route
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function standings()
-    {
-        return view('team.standings');
+    public function index(){
+        return view('dir.team.index')
+            ->withTeams(Team::all());
     }
 
-    /**
-     * Show a given team.
-     * show route
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Team $team)
-    {
-        return view('team.show')->withTeam($team);
+    public function show($id){
+        return view('dir.team.show')
+            ->withTeam(Team::find($id));
+    }
+
+    public function create(){
+        return view('dir.team.create');
+    }
+
+    public function store(Request $request){
+        TeamManager::store($request);
+    }
+
+    public function edit($id){
+        return view('dir.team.edit')
+            ->withTeam(TeamManager::find($id));
+    }
+
+    public function update($id, Request $request){
+        TeamManager::update($id, $request);
     }
 }

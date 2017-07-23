@@ -14,5 +14,7 @@
 |
 */
 
-Route::post('/update/password', 'Action\UpdateController@password')->name('action.update.password');
-Route::post('/update/profile', 'Action\UpdateController@profile')->name('action.update.profile');
+//include_once('actionroutes\update.php');
+include_once('actionroutes\chat.php');
+include_once('actionroutes\trade.php');
+include_once('actionroutes\league.php');

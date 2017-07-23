@@ -1,57 +1,37 @@
-<?php 
+<?php
 
 namespace App\Managers;
 
-use \App\ResourceModels\Players\Player;
-use \App\Team;
-use \App\RosterPlayer;
+use Illuminate\Http\Request;
 
-class PlayerManager
+class PlayerManager extends Manager
 {
-
-    private static $all = null;
-
-    private static $team = null;
-
-    private static $available = null;
-
-    private static $ireligible = null;
-
-    private static $onroster = null;
-
-    public static function all(){
-        if($all == null) $all = Player::all();
-        return $all;
+    static function display($player, $format){
+        $string = $format;
+        $string = str_replace('{F}', $player->firstname, $string);
+        $string = str_replace('{L}', $player->lastname, $string);
+        $string = str_replace('{N}', $player->nflteam, $string);
+        $string = str_replace('{P}', $player->position, $string);
+        return $string;
     }
 
-    public static function team($team_id){
-        if($team == null) $team = new \stdClass();
-        if(!isset($team->{$id})){
-            $temp_team = collect();
-            // Set variable to all players on given team
-        }
-        return $team->{$id};
+    static function store(Request $request){
+
     }
 
-    public static function available($team_id){
-        if($available == null){
-        // Set variable to all players not on rosters    
-        }
-        return $available;
+    static function update($id, Request $request){
+
     }
 
-    public static function ireligible(){
-        if($ireligible == null){
-        // Set variable to all players that are ireligible    
-        }
-        return $ireligible;
+    static function destroy($id){
+
     }
 
-    public static function onroster($team_id){
-        if($onroster == null){
-            // Set variable to all players on roster    
-        }
-        return $onroster;
+    static function find($id){
+
     }
 
+    static function all(){
+        
+    }
 }

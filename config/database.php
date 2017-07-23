@@ -13,9 +13,11 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'roadtoglory'),
+    //'default' => env('DB_CONNECTION', 'roadtoglory'),
+    //'roadtoglory' => env('roadtoglory', 'roadtoglory'),
+    'default' => env('DB_CONNECTION', 'roadtoglory_test'),
+    'roadtoglory' => env('roadtoglory_test', 'roadtoglory_test'),
     'players' => env('players', 'roadtoglory_players'),
-    'roadtoglory' => env('roadtoglory', 'roadtoglory'),
     'system' => env('system', 'roadtoglory_system'),
 
     /*
@@ -41,6 +43,21 @@ return [
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
             'database' => env('PLAYERS_DATABASE', 'forge'),
+            'username' => env('DB_USERNAME', 'forge'),
+            'password' => env('DB_PASSWORD', ''),
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
+
+        'roadtoglory_test' => [
+            'driver' => 'mysql',
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '3306'),
+            'database' => env('ROADTOGLORY_DATABASE_TEST', 'forge'),
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
