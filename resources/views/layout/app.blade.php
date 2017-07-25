@@ -36,6 +36,8 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
 
+        <!-- Scripts -->
+
         @stack('head_script')
     </head>
 
@@ -44,7 +46,7 @@
     @else
         <body class="hold-transition skin-blue sidebar-mini sidebar-collapse">
     @endif
-        <div class="wrapper">
+        <div id="app" class="wrapper">
             @include('layout.header')
 
             @if(auth()->user())
@@ -87,6 +89,10 @@
         </div>
         <!-- ./wrapper -->
 
+        
+        <script>
+            window.Laravel = {!! json_encode([ 'csrfToken' => csrf_token(), ]) !!}
+        </script>
         <!-- jQuery 2.2.3 -->
         <script src="{{ URL::asset('plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
         <!-- Bootstrap 3.3.6 -->
@@ -109,9 +115,18 @@
                 enableBSToppltip: true
             };
         </script>
+        <!--<script src="{{ URL::asset('js/manifest.min.js') }}"></script>-->
+        <!--<script src="{{ URL::asset('js/vendor.min.js') }}"></script>-->
+        <script src="{{ URL::asset('js/app.js') }}"></script>
         <script src="{{ URL::asset('js/app.min.js') }}"></script>
 
         <script>
+
+            // For consuming own api with axios
+            window.axios.defaults.headers.common = {   
+                'X-CSRF-TOKEN': '{{csrf_token()}}',   
+                'X-Requested-With': 'XMLHttpRequest' 
+            };
 
             function set_activemenu(id){
                 $("#"+id).addClass('active');

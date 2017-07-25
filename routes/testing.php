@@ -16,3 +16,7 @@ Route::get('/test', function(){
     //dd(user()->permissions->can('ADMIN'));
 
 });
+
+Route::get('/testjs', function(){
+    return view('testing.js');
+})->middleware('web');
