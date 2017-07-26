@@ -20,7 +20,7 @@
 @endsection
 
 @section('content')
-    <div class="row">
+    <div class="row" id="tradecreate">
         <div class="col-md-6">
             @include('dir.trade.partials.create.options')
         </div>
@@ -30,9 +30,19 @@
                 <a href="{{url()->previous()}}" class="btn btn-warning">Undo</a>
                 <a href="{{route('trade.index')}}" class="btn btn-danger pull-right">Cancel</a>
             @endcomponent
+            <trade-create-trade-teams :teams="trade.teams"></trade-create-trade-teams> 
             @foreach($teams as $team)
                 @include('dir.trade.partials.create.team', ['team' => $team])
             @endforeach
         </div>
     </div>
 @endsection
+
+@push('vue')
+    <script src="{{URL::asset('vue/views/trade/create.js')}}"></script>
+@endpush
+
+@push('js_routes')
+    routes['action.league.teams'] = "{{route('action.league.teams')}}";
+    routes['action.trade.items'] = "{{route('action.trade.items')}}";     
+@endpush

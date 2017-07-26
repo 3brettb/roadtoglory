@@ -102,7 +102,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapActionRoutes()
     {
         Route::prefix('action')
-            ->middleware(['api','web'])
+            ->middleware('api')
             ->namespace($this->namespace)
             ->group(base_path('routes/actions.php'));
     }

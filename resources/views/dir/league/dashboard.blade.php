@@ -9,7 +9,7 @@
 @endsection
 
 @section('pagetitle')
-    <h1>{{league()->name}}</h1>
+    <h1>{{league()->name}} @{{testvue2}}</h1>
 @endsection
 
 @section('breadcrumb')

@@ -3,7 +3,7 @@
 @section('content')
     Testing JS
 
-    <div id="testjs">@{{myvar}}</div>
+    <div id="eaj">@{{myvar2}}</div>
 
     <passport-clients></passport-clients>
     <passport-authorized-clients></passport-authorized-clients>
@@ -19,5 +19,7 @@
     .then(response => {
         console.log(response.data);
     });
+
+    
 
 @endpush

@@ -37,8 +37,15 @@
         <![endif]-->
 
         <!-- Scripts -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.min.js"></script>
 
         @stack('head_script')
+
+        <!-- Pushing routes for Vue.js -->
+        <script>
+            const routes = {};
+            @stack('js_routes')
+        </script>
     </head>
 
     @if(auth()->user())
@@ -119,6 +126,8 @@
         <!--<script src="{{ URL::asset('js/vendor.min.js') }}"></script>-->
         <script src="{{ URL::asset('js/app.js') }}"></script>
         <script src="{{ URL::asset('js/app.min.js') }}"></script>
+        
+        @stack('vue')
 
         <script>
 
@@ -127,7 +136,7 @@
                 'X-CSRF-TOKEN': '{{csrf_token()}}',   
                 'X-Requested-With': 'XMLHttpRequest' 
             };
-
+            
             function set_activemenu(id){
                 $("#"+id).addClass('active');
             }

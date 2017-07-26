@@ -63,10 +63,12 @@ class Team extends Model
         return $this->hasMany(Player::class);
     }
 
+    // Owned picks (tradeable)
     public function picks(){
         return $this->hasMany(DraftPick::class, 'owner_id', 'id');
     }
 
+    // Position picks
     public function team_picks(){
         return $this->hasMany(DraftPick::class, 'team_id', 'id');
     }
