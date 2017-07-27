@@ -15,7 +15,7 @@
                     <label for="item">Item</label>
                     <select class="form-control" required id="item" @change="selectItem($event)" :disabled="items.length == 0">
                         <option value="-1">Select a Trade Item</option>
-                        <option v-for="item in items" v-if="!vue_options.trade.items.includes(getItemId(item))" :value="getItemId(item)">@{{item.string}}</option>
+                        <option v-for="item in items" :value="getItemId(item)">@{{item.string}}</option>
                     </select>
                     {{--  {!! Form::select('item', [], null, ['class="form-control" autofocus id="item_select"']) !!}  --}}
                 </div>
@@ -24,7 +24,7 @@
                     <label for="to">Send To</label>
                     <select class="form-control" required id="to" @change="selectTo($event)" :disabled="tos.length == 0">
                         <option value="-1">Select a Team</option>
-                        <option v-for="to in tos" v-if="to != vue_options.selection.team" :value="to.id">@{{to.name}} @{{to.mascot}}</option>
+                        <option v-for="to in tos" v-if="to != vue.selection.team" :value="to.id">@{{to.name}} @{{to.mascot}}</option>
                     </select>
                     {{--  {!! Form::select('to', league()->teams->pluck('select_name', 'id'), null, ['class="form-control" autofocus id="sendto_select"']) !!}  --}}
                 </div>

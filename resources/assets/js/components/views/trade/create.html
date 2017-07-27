@@ -1,6 +1,25 @@
-<div>
-    <span>Test</span>
-    <ul>
-        <li v-for="team in teams">{{team}}</li>
-    </ul>
-</div>
+<div class="trade trade-team">
+    <div v-for="id in trade.ids" class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">{{trade.teams[id].team.name}} {{trade.teams[id].team.mascot}}</h3>
+
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            </div>
+        </div>
+        <div class="box-body">
+            <div v-for="item in trade.teams[id].items" class="trade trade-item row">
+                <div class="col-xs-2 text-center">
+                    <a href="#" class="label label-danger" onclick="javascript:void(0);" v-on:click="vue.removeFromTrade(vue.getItemId(item), id)">
+                        <i class="fa fa-close"></i>
+                    </a>
+                </div>
+                <div class="col-xs-10">
+                    <span style="margin-right: 10px;">{{item.string}}</span> 
+                    <i class="fa fa-long-arrow-left"></i>
+                    <span style="margin-left: 10px;">(FROM) {{item.from.name}} {{item.from.mascot}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

@@ -31814,7 +31814,7 @@ Vue.component('example', __webpack_require__("./resources/assets/js/components/E
 //     }
 // });
 
-Vue.component('trade-create-trade-teams', { props: ['teams'], template: __webpack_require__("./resources/assets/js/components/views/trade/create.html") });
+Vue.component('trade-create-overview', { props: ['trade'], template: __webpack_require__("./resources/assets/js/components/views/trade/create.html") });
 
 /***/ }),
 
@@ -31916,7 +31916,7 @@ module.exports = Component.exports
 /***/ "./resources/assets/js/components/views/trade/create.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n    <span>Test</span>\r\n    <ul>\r\n        <li v-for=\"team in teams\">{{team}}</li>\r\n    </ul>\r\n</div>\r\n";
+module.exports = "<div class=\"trade trade-team\">\r\n    <div v-for=\"id in trade.ids\" class=\"box box-info\">\r\n        <div class=\"box-header with-border\">\r\n            <h3 class=\"box-title\">{{trade.teams[id].team.name}} {{trade.teams[id].team.mascot}}</h3>\r\n\r\n            <div class=\"box-tools pull-right\">\r\n                <button type=\"button\" class=\"btn btn-box-tool\" data-widget=\"collapse\"><i class=\"fa fa-minus\"></i></button>\r\n            </div>\r\n        </div>\r\n        <div class=\"box-body\">\r\n            <div v-for=\"item in trade.teams[id].items\" class=\"trade trade-item row\">\r\n                <div class=\"col-xs-2 text-center\">\r\n                    <a href=\"#\" class=\"label label-danger\" onclick=\"javascript:void(0);\" v-on:click=\"vue.removeFromTrade(vue.getItemId(item), id)\">\r\n                        <i class=\"fa fa-close\"></i>\r\n                    </a>\r\n                </div>\r\n                <div class=\"col-xs-10\">\r\n                    <span style=\"margin-right: 10px;\">{{item.string}}</span> \r\n                    <i class=\"fa fa-long-arrow-left\"></i>\r\n                    <span style=\"margin-left: 10px;\">(FROM) {{item.from.name}} {{item.from.mascot}}</span>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div> ";
 
 /***/ }),
 

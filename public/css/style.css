@@ -198,3 +198,17 @@ hr.no-margin {
 .right .chat-img {
     float: right;
 }
+
+.btn[disabled],.form-control[disabled] {
+    cursor: default;
+}
+
+.btn[disabled].btn-primary:hover {
+    background-color: #3c8dbc;
+    border-color: #367fa9;
+}
+
+.btn[disabled].btn-success:hover {
+    background-color: #00a65a;
+    border-color: #008d4c;
+}

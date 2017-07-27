@@ -20,17 +20,17 @@
 @endsection
 
 @section('content')
-    <div class="row" id="tradecreate">
+    <div class="row" id="trade_create">
         <div class="col-md-6">
             @include('dir.trade.partials.create.options')
         </div>
         <div class="col-md-6">
             @component('components.bars.action')
-                <a href="#" class="btn btn-success">Send Trade Request</a>
-                <a href="{{url()->previous()}}" class="btn btn-warning">Undo</a>
+                <button v-on:click="send" class="btn btn-success" onclick="javascript:void(0);" :disabled="trade.ids.length > 0 ? false : true">Send Trade Request</button>
+                <a v-on:click="clear" class="btn btn-warning">Clear</a>
                 <a href="{{route('trade.index')}}" class="btn btn-danger pull-right">Cancel</a>
             @endcomponent
-            <trade-create-trade-teams :teams="trade.teams"></trade-create-trade-teams> 
+            <trade-create-overview :trade="trade"></trade-create-overview> 
             @foreach($teams as $team)
                 @include('dir.trade.partials.create.team', ['team' => $team])
             @endforeach

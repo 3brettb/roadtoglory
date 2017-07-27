@@ -22,4 +22,4 @@ require('./bootstrap');
 //     }
 // });
 
-Vue.component('trade-create-trade-teams', {props: ['teams'], template: require('./components/views/trade/create.html')});
+Vue.component('trade-create-overview', {props: ['trade'], template: require('./components/views/trade/create.html')});
