@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Http\Request;
 
-class MatchupTeam extends Model
+class MatchupTeam extends Pivot
 {
     protected $table = 'matchup_teams';
 

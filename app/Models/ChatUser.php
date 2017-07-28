@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Http\Request;
 
-class ChatUser extends Model
+class ChatUser extends Pivot
 {
     protected $table = 'chat_users';
 
