@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Http\Request;
 
-class RosterPlayer extends Model
+class RosterPlayer extends Pivot
 {
     protected $table = 'roster_players';
 

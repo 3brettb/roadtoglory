@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Http\Request;
 
-class Tradeable extends Model
+class Tradeable extends Pivot
 {
     protected $table = 'trades';
 
