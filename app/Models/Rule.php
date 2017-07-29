@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
+use App\Managers\RuleManager;
+
 class Rule extends Model
 {
     protected $table = 'rules';
@@ -15,7 +17,7 @@ class Rule extends Model
      * @var array
      */
     protected $fillable = [
-        'league_id', 'subject', 'description', 'rule_id', 'type_id',
+        'league_id', 'subject', 'description', 'number', 'rule_id', 'type_id',
     ];
 
     public function routeto(){
@@ -40,6 +42,10 @@ class Rule extends Model
 
     public function activity(){
         return $this->morphToMany(Activity::class, 'activityable');
+    }
+
+    public function toString(){
+        return RuleManager::toString($this);
     }
 
 }

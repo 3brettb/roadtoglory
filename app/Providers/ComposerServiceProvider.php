@@ -25,6 +25,7 @@ class ComposerServiceProvider extends ServiceProvider
         include_once('ComposerDependancies\Message.php');
         include_once('ComposerDependancies\Poll.php');
         include_once('ComposerDependancies\Chat.php');
+        include_once('ComposerDependancies\Rule.php');
 
     }
 

@@ -1,4 +1,4 @@
-<div class="box {{$class or 'box-info'}}" style="{{$style['box'] or ''}}">
+<div id="{{$id or ''}}" class="box {{$class or 'box-info'}}" style="{{$style['box'] or ''}}">
     <div class="box-header with-border">
         <h3 class="box-title">{{$title}}</h3>
 

@@ -212,3 +212,12 @@ hr.no-margin {
     background-color: #00a65a;
     border-color: #008d4c;
 }
+
+ul.rule.rule-contents-list {
+    list-style-type: none;
+    padding-left: 25px;
+}
+
+rule.rule-contents a{
+    
+}
