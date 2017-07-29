@@ -218,6 +218,16 @@ ul.rule.rule-contents-list {
     padding-left: 25px;
 }
 
-rule.rule-contents a{
-    
+.rule.children > .child {
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.rule.children > .child > span {
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.box.rule-box .box-title{
+    text-decoration: underline;
 }
