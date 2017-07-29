@@ -181,7 +181,20 @@ vue = new Vue({
         },
 
         send: function() {
-            console.log('send');
+            axios.post(routes['action.trade.send'], {
+                trade: JSON.stringify(this.trade)
+            }).then(response => {
+                if(response.data.hasError){
+                    alert(response.data.message);
+                }
+                else if(response.data.hasRedirect){
+                    if (confirm(response.data.message) == true) {
+                        window.location = response.data.redirect; 
+                    } else {
+                        window.location = response.data.redirect; 
+                    }  
+                }
+            });
         },
     },
     created: function () {

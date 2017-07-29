@@ -26,14 +26,11 @@
         </div>
         <div class="col-md-6">
             @component('components.bars.action')
-                <button v-on:click="send" class="btn btn-success" onclick="javascript:void(0);" :disabled="trade.ids.length > 0 ? false : true">Send Trade Request</button>
+                <button v-on:click="send" class="btn btn-success" onclick="javascript:void(0);" :disabled="trade.ids.length > 1 ? false : true">Send Trade Request</button>
                 <a v-on:click="clear" class="btn btn-warning">Clear</a>
                 <a href="{{route('trade.index')}}" class="btn btn-danger pull-right">Cancel</a>
             @endcomponent
             <trade-create-overview :trade="trade"></trade-create-overview> 
-            @foreach($teams as $team)
-                @include('dir.trade.partials.create.team', ['team' => $team])
-            @endforeach
         </div>
     </div>
 @endsection
@@ -44,5 +41,6 @@
 
 @push('js_routes')
     routes['action.league.teams'] = "{{route('action.league.teams')}}";
-    routes['action.trade.items'] = "{{route('action.trade.items')}}";     
+    routes['action.trade.items'] = "{{route('action.trade.items')}}";   
+    routes['action.trade.send'] = "{{route('action.trade.send')}}";     
 @endpush

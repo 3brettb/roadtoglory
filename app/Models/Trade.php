@@ -20,6 +20,7 @@ class Trade extends Model
 
     public static function boot(){
         static::creating(function($model){
+            $model->league_id = league()->id;
             $model->block = (isset($model->block)) ? $model->block : false;
         });
     }
@@ -35,9 +36,14 @@ class Trade extends Model
      */
     protected $casts = [
         'closes' => 'timestamp',
-        'accepted' => 'boolean',
-        'approved' => 'boolean',
     ];
+
+    public function delete() {
+        $this->picks()->detach();
+        $this->players()->detach();
+        $this->teams()->detach();
+        parent::delete();
+    }
 
     public function items(){
         $items = array();
@@ -62,27 +68,22 @@ class Trade extends Model
 
     public function status(){
         if($this->approved == null){
-            switch($this->accepted){
-                case null:
-                    return "Waiting";
-                case false:
-                    return "Rejected";
-                case true:
+            switch(strval($this->accepted))
+            {
+                case "1":
                     return "Accepted";
+                case "0":
+                    return "Rejected";
+                case "":
+                    return "Waiting";
             }
         }
         else{
-            switch($this->approved){
-                case false:
-                    switch($this->accepted){
-                        case null;
-                        case true:
-                            return "Rejected";
-                        case false:
-                            return "Vetoed";
-                    }
-                case true:
-                    return (\Carbon\Carbon::now() > $this->closes) ? "Processed" : "Approved";
+            if($this->approved == 1){
+                return (\Carbon\Carbon::now() > $this->closes) ? "Processed" : "Approved";
+            }
+            else {
+                return (!$this->accepted == 0) ? "Vetoed" : "Rejected";
             }
         }
     }

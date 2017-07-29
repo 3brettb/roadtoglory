@@ -23,3 +23,17 @@ require('./bootstrap');
 // });
 
 Vue.component('trade-create-overview', {props: ['trade'], template: require('./components/views/trade/create.html')});
+
+
+methods = {
+    
+    axiosOnResponse: function(data){
+        if(data.hasError){
+            alert(data.message);
+        }
+        else if(data.hasRedirect){
+            confirm(data.message)
+            window.location = data.redirect; 
+        }
+    }
+}

@@ -10,6 +10,8 @@ use App\Models\Trade;
 class Index
 {
 
+    private $model;
+
     /**
      * Create a new profile composer.
      *
@@ -17,7 +19,7 @@ class Index
      */
     public function __construct()
     {
-        $this->init();
+        $this->model = new \stdClass();
     }
 
     /**
@@ -28,23 +30,48 @@ class Index
      */
     public function compose(View $view)
     {
-        $view->with('trades', $this->trades);
-        $view->with('mytrades', $this->mytrades);
+        $view->with('model', $this->model());
     }
 
-    private function init(){
-        $this->trades = $this->getTrades();
-        $this->mytrades = $this->getMyTrades();
+    private function model()
+    {
+        $trades = new \stdClass;
+        $trades->active = $this->getActiveTrades();
+        $trades->accepted = $this->getAcceptedTrades();
+        $trades->rejected = $this->getRejectedTrades();
+        $trades->league = $this->getLeagueTrades();
+        $this->model->trades = $trades;
+        return $this->model;
     }
 
-    private function getTrades(){
+    private function getLeagueTrades()
+    {
         $trades = league()->trades()->where('accepted', true)->paginate(10);
         return $trades;
     }
 
-    private function getMyTrades(){
-        // Get only trades where active user is associated.
-        $trades = null;
+    private function getActiveTrades()
+    {
+        $trades = team()->trades()->whereNull('accepted')->whereNull('approved')->get();
+        foreach($trades as $key => $trade)
+        {
+            if($trade->accepted == 0)
+            {
+                $trades->splice($key, 1);
+            }
+        }
+        return $trades;
+    }
+
+    private function getAcceptedTrades()
+    {
+        $trades = team()->trades()->where('accepted', 1)->get();
+        return $trades;
+    }
+
+    private function getRejectedTrades()
+    {
+        $trades = team()->trades()->where('accepted', 0)->get();
         return $trades;
     }
 

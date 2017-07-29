@@ -31816,6 +31816,18 @@ Vue.component('example', __webpack_require__("./resources/assets/js/components/E
 
 Vue.component('trade-create-overview', { props: ['trade'], template: __webpack_require__("./resources/assets/js/components/views/trade/create.html") });
 
+methods = {
+
+    axiosOnResponse: function axiosOnResponse(data) {
+        if (data.hasError) {
+            alert(data.message);
+        } else if (data.hasRedirect) {
+            confirm(data.message);
+            window.location = data.redirect;
+        }
+    }
+};
+
 /***/ }),
 
 /***/ "./resources/assets/js/bootstrap.js":

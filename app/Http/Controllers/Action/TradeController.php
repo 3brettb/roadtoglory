@@ -6,7 +6,10 @@ use Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\Helpers\ResponseObject;
+use App\Managers\TradeManager;
 use App\Models\Team;
+use App\Models\DraftPick;
 
 class TradeController extends Controller
 {
@@ -21,24 +24,10 @@ class TradeController extends Controller
     }
 
     public function items(Request $request){
-        $out = array();
-        if(isset($request->team)){
-            $team = Team::with(['picks', 'players'])->where('id', $request->team)->first();
-            //$team->load(['picks', 'players']);
-            foreach($team->players as $player){
-                $player->type = "player";
-                $player->string = $player->toString();
-                array_push($out, $player);
-            }
-            foreach($team->picks as $pick){
-                $pick->type = "pick";
-                $pick->string = $pick->toString();
-                array_push($out, $pick);
-            }
-        }
-        else {
-            array_push($out, ['error' => 'Team not selected']);
-        }
-        return $out;
+        return TradeManager::items($request);
+    }
+
+    public function send(Request $request){
+        return TradeManager::store($request);
     }
 }

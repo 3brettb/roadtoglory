@@ -10,3 +10,7 @@
         ['dir.trade.create'],
         'App\Http\ViewComposers\Trade\Create'
     );
+    View::composer(
+        ['dir.trade.show'],
+        'App\Http\ViewComposers\Trade\Show'
+    );

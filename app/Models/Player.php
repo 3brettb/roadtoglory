@@ -38,6 +38,10 @@ class Player extends Model
         return $this->belongsTo(\App\ResourceModels\Player\PlayerData::class);
     }
 
+    public function owner(){
+        return $this->belongsTo(Team::class, 'team_id', 'id');
+    }
+
     public function team(){
         return $this->belongsTo(Team::class);
     }

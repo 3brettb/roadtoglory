@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Trade;
 use App\Managers\TradeManager;
 
 class TradeController extends Controller
@@ -24,7 +25,7 @@ class TradeController extends Controller
 
     public function show($id){
         return view('dir.trade.show')
-            ->withTrade(TradeManager::find($id));
+            ->withTrade(Trade::find($id)->load(['picks', 'players', 'teams']));
     }
 
     public function create(){
@@ -46,5 +47,13 @@ class TradeController extends Controller
 
     public function destroy($id){
         TradeManager::destroy($id);
+    }
+
+    public function accept(Trade $trade){
+        return TradeManager::accept($trade); 
+    }
+
+    public function reject(Trade $trade){
+        return TradeManager::reject($trade);
     }
 }

@@ -73,6 +73,10 @@ class Team extends Model
         return $this->hasMany(DraftPick::class, 'team_id', 'id');
     }
 
+    public function sent_trades(){
+        return $this->hasMany(Trade::class, 'team_id', 'id');
+    }
+
     public function trades(){
         return $this->morphToMany(Trade::class, 'tradeable')->withPivot('accept', 'team_id');
     }
@@ -107,6 +111,17 @@ class Team extends Model
 
     public function activity(){
         return $this->morphToMany(Activity::class, 'activityable');
+    }
+
+    public function tradeItems($trade){
+        $items = array();
+        foreach($trade->players as $player){
+            ($player->pivot->team_id == $this->id) ? array_push($items, $player) : null;
+        }
+        foreach($trade->picks as $pick){
+            ($pick->pivot->team_id == $this->id) ? array_push($items, $pick) : null;
+        }
+        return $items;
     }
 
     // ------------------------

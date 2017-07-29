@@ -14,8 +14,8 @@
 @endsection
 
 @section('breadcrumb')
-    <li>Trading</li>
-    <li class="active">Trades</li>
+    <li><a href="{{route(Route::currentRouteName())}}">Trading</a></li>
+    <li class="active"><a href="{{route(Route::currentRouteName())}}">Trades</a></li> 
 @endsection
 
 @section('content')
@@ -33,24 +33,42 @@
             @endcomponent
             @component('components.box.default', ['title' => 'My Active Trades'])
                 @slot('body')
-                    @if($mytrades && count($mytrades) > 0)
-                        @include('dir.trade.partials.tradeaccordian', ['trades' => $mytrades])
+                    @if($model->trades->active && count($model->trades->active) > 0)
+                        @include('dir.trade.partials.tradeaccordian', ['trades' => $model->trades->active, 'id' => 'active'])
                     @else
                         <span>You have no active trades.</span>
                     @endif
                 @endslot
             @endcomponent
+            @component('components.box.default', ['title' => 'My Accepted Trades'])
+                @slot('body')
+                    @if($model->trades->accepted && count($model->trades->accepted) > 0)
+                        @include('dir.trade.partials.tradeaccordian', ['trades' => $model->trades->accepted, 'id' => 'accepted'])
+                    @else
+                        <span>You have no accepted trades.</span>
+                    @endif
+                @endslot
+            @endcomponent
             @component('components.box.default', ['title' => 'League Trades'])
                 @slot('buttons')
-                    @if($trades)
-                        <div class="pull-right">{{$trades->links()}}</div>
+                    @if($model->trades->league)
+                        <div class="pull-right">{{$model->trades->league->links()}}</div>
                     @endif
                 @endslot
                 @slot('body')
-                    @if($trades && count($trades) > 0)
-                        @include('dir.trade.partials.tradeaccordian', ['trades' => $trades])
+                    @if($model->trades->league && count($model->trades->league) > 0)
+                        @include('dir.trade.partials.tradeaccordian', ['trades' => $model->trades->league, 'id' => 'all'])
                     @else
                         <span>There are no trades to display.</span>
+                    @endif
+                @endslot
+            @endcomponent
+            @component('components.box.default', ['title' => 'My Rejected Trades'])
+                @slot('body')
+                    @if($model->trades->rejected && count($model->trades->rejected) > 0)
+                        @include('dir.trade.partials.tradeaccordian', ['trades' => $model->trades->rejected, 'id' => 'rejected'])
+                    @else
+                        <span>You have no rejected trades.</span>
                     @endif
                 @endslot
             @endcomponent
