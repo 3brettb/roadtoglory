@@ -286,8 +286,9 @@ CREATE TABLE rule_types (
 CREATE TABLE rules (
     id INT(20) unsigned NOT NULL AUTO_INCREMENT,
     league_id INT(20) unsigned NOT NULL,
-    subject VARCHAR(100) NOT NULL,
+    subject VARCHAR(100) NULL,
     description LONGTEXT NOT NULL,
+    number INT(4) unsigned NOT NULL,
     rule_id INT(20) unsigned NULL,
     type_id INT(20) unsigned NOT NULL,
     created_at TIMESTAMP NULL DEFAULT NULL,
