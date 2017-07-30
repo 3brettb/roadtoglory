@@ -44,7 +44,9 @@
         <!-- Pushing routes for Vue.js -->
         <script>
             const routes = {};
+            const vue_model = {};
             @stack('js_routes')
+            @stack('vue_model')
         </script>
     </head>
 
@@ -130,12 +132,6 @@
         @stack('vue')
 
         <script>
-
-            // For consuming own api with axios
-            window.axios.defaults.headers.common = {   
-                'X-CSRF-TOKEN': '{{csrf_token()}}',   
-                'X-Requested-With': 'XMLHttpRequest' 
-            };
             
             function set_activemenu(id){
                 $("#"+id).addClass('active');

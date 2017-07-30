@@ -35,7 +35,7 @@
                 @endcomponent
             </div>
             <div class="row no-margin">
-                @include('dir.player.partials.list')
+                @include('dir.player.partials.list', ['players' => $model->players])
             </div>
         </div>
     </div>
