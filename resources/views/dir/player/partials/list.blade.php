@@ -65,7 +65,11 @@
 @endpush
 
 @push('vue_model')
-
+    vue_model['players'] = [
+        @foreach($players as $player)
+            {!!json_encode($player) !!},
+        @endforeach
+    ];
 @endpush
 
 @push('vue')

@@ -52755,6 +52755,8 @@ Vue.component('example', __webpack_require__("./resources/assets/js/components/E
 
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_tables_2__["ClientTable"], {}, false, null);
+//var VueTables = require('vue-tables');
+//Vue.use(VueTables.client);
 
 Vue.component('trade-create-overview', { props: ['trade'], template: __webpack_require__("./resources/assets/js/components/views/trade/create.html") });
 
