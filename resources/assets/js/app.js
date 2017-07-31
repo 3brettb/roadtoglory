@@ -22,6 +22,9 @@ require('./bootstrap');
 //     }
 // });
 
+import {ServerTable, ClientTable, Event} from 'vue-tables-2';
+Vue.use(ClientTable, {}, false, null);
+
 Vue.component('trade-create-overview', {props: ['trade'], template: require('./components/views/trade/create.html')});
 
 

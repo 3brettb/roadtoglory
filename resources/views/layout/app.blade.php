@@ -22,7 +22,9 @@
             folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="{{ URL::asset('css/skins/_all-skins.min.css') }}">
 
-        @stack('style')
+        <style>
+            @stack('style')
+        </style>
 
         <!-- Site Override CSS -->
         <link rel="stylesheet" href="{{ URL::asset('css/roadtoglory.css') }}">
