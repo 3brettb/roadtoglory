@@ -26,6 +26,10 @@ class Setting extends Model
         return $this->belongsTo(\App\Models\Types\SettingType::class);
     }
 
+    public function category(){
+        return $this->belongsTo(\App\Models\Types\SettingCategory::class);
+    }
+
     public function league(){
         return $this->belongsTo(League::class);
     }

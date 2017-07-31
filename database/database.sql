@@ -299,6 +299,15 @@ CREATE TABLE rules (
     CONSTRAINT FK_RULE_TYPE FOREIGN KEY (type_id) REFERENCES rule_types(id)
 );
 
+CREATE TABLE setting_categories (
+    id INT(20) unsigned NOT NULL AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    description VARCHAR(255) NULL DEFAULT NULL,
+    created_at TIMESTAMP NULL DEFAULT NULL,
+    updated_at TIMESTAMP NULL DEFAULT NULL,
+    CONSTRAINT PK_SETTING_CATEGORIES PRIMARY KEY (id)
+);
+
 CREATE TABLE setting_types (
     id INT(20) unsigned NOT NULL AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
