@@ -21,10 +21,10 @@
     <div class="row">
         <div class="col-md-2">
             <div class="row no-margin">
-                @include('dir.team.partials.team', ['standing' => $standing])
+                @include('dir.team.partials.team', ['standing' => $model->standing])
             </div>
             <div class="row no-margin">
-                @include('dir.team.partials.info', ['weeks' => $weeks])
+                @include('dir.team.partials.info', ['weeks' => $model->weeks])
             </div>
         </div>
         <div class="col-md-10">
@@ -40,7 +40,7 @@
                 @endcomponent
             </div>
             <div class="row no-margin">
-                @include('dir.team.partials.roster', ['team' => $team])
+                @include('dir.team.partials.roster', ['roster' => $model->roster])
             </div>
         </div>
     </div>

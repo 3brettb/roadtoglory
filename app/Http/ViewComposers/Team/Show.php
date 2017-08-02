@@ -10,6 +10,10 @@ use App\Models\Team;
 class Show
 {
 
+    private $model;
+
+    private $team;
+
     /**
      * Create a new profile composer.
      *
@@ -17,7 +21,7 @@ class Show
      */
     public function __construct()
     {
-        $this->init();
+        $this->model = new \stdClass();
     }
 
     /**
@@ -28,29 +32,36 @@ class Show
      */
     public function compose(View $view)
     {
-        $view->with('standing', $this->standing);
-        $view->with('weeks', $this->weeks);
-        $view->with('roster', $this->roster);
+        $this->team = $view->team;
+        $this->team->load(['players', 'matchups']);
+        $view->with('model', $this->model());
     }
 
-    private function init(){
-        $this->standing = $this->getStanding();
-        $this->weeks = $this->getWeeks();
-        $this->roster = $this->getRoster();
+    private function model(){
+        $this->model->roster = $this->getRoster();
+        $this->model->weeks = $this->getWeeks();
+        $this->model->team = $this->getTeam();
+        $this->model->standing = $this->getStanding();
+        return $this->model;
     }
 
     private function getStanding(){
-        $standing = DataObject::TeamStanding();
+        $standing = $this->team->standing();
         return $standing;
     }
 
+    private function getTeam(){
+        $team = $this->team;
+        return $team;
+    }
+
     private function getWeeks(){
-        $weeks = DataObject::TeamWeeks();
+        $weeks = $this->team->matchups;
         return $weeks;
     }
 
     private function getRoster(){
-        $roster = DataObject::TeamRoster();
+        $roster = $this->team->players;
         return $roster;
     }
 

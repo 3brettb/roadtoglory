@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
+use App\Managers\TeamManager;
+use App\Models\Resource\Players\Player as SystemPlayer;
+
 class Team extends Model
 {
     protected $table = 'teams';
@@ -35,8 +38,20 @@ class Team extends Model
          return \URL::asset("/img/users/default_user.jpg");
     }
 
+    public function standing(){
+        return TeamManager::standing($this);
+    }
+
     public function getSelectNameAttribute(){
         return $this->name." ".$this->mascot."(".$this->owner->select_name.")";
+    }
+
+    public function getDisplayNameAttribute(){
+        return $this->name." ".$this->mascot;
+    }
+
+    public function getDivisionAttribute(){
+        return $this->divisions()->where('season_id', league()->season->id)->first();
     }
 
     public function record(){
@@ -60,7 +75,7 @@ class Team extends Model
     }
 
     public function players(){
-        return $this->hasMany(Player::class);
+        return $this->belongsToMany(SystemPlayer::class, env('ROADTOGLORY_DATABASE').'.players', 'team_id', 'player_data_id');
     }
 
     // Owned picks (tradeable)
@@ -86,7 +101,7 @@ class Team extends Model
     }
 
     public function matchups(){
-        return $this->belongsToMany(Matchup::class, 'matchup_teams', 'team_id', 'matchup_id');
+        return $this->belongsToMany(Matchup::class, 'matchup_teams', 'team_id', 'matchup_id')->withPivot(['score', 'win']);
     }
 
     public function ir_eligibles(){

@@ -15,7 +15,7 @@ class Matchup extends Model
      * @var array
      */
     protected $fillable = [
-        'league_id', 'week_id', 'type_id',
+        'league_id', 'season_id', 'week_id', 'type_id',
     ];
 
     public function routeto(){
@@ -30,12 +30,16 @@ class Matchup extends Model
         return $this->belongsTo(League::class);
     }
 
+    public function season(){
+        return $this->belongsTo(Season::class);
+    }
+
     public function week(){
         return $this->belongsTo(Week::class);
     }
 
     public function teams(){
-        return $this->belongsToMany(Team::class, 'matchup_teams', 'matchup_id', 'team_id');
+        return $this->belongsToMany(Team::class, 'matchup_teams', 'matchup_id', 'team_id')->withPivot(['score', 'win']);
     }
 
     public function polls(){

@@ -4,6 +4,11 @@ namespace App\Managers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Team;
+use App\Models\Matchup;
+use App\ViewModels\Matchup as MatchupViewModel;
+use App\ViewModels\Standing as StandingViewModel;
+
 class TeamManager extends Manager
 {
     static function display($team, $format){
@@ -31,5 +36,21 @@ class TeamManager extends Manager
 
     static function all(){
         
+    }
+
+    static function standing(Team $team)
+    {
+        $standing = new \stdClass();
+        $standing->league = new StandingViewModel($team);
+        $standing->division = new StandingViewModel($team);
+
+        $matchups = $team->matchups()->where('season_id', league()->season->id)->get();
+        foreach($matchups as $matchup)
+        {
+            $matchup = new MatchupViewModel($matchup);
+            $standing->league->addMatchup($matchup);
+            if($matchup->division) $standing->division->addMatchup($matchup);
+        }
+        return $standing;
     }
 }

@@ -542,12 +542,14 @@ CREATE TABLE matchup_types (
 CREATE TABLE matchups (
     id INT(20) unsigned NOT NULL AUTO_INCREMENT,
     league_id INT(20) unsigned NOT NULL,
+    season_id INT(20) unsigned NOT NULL,
     week_id INT(20) unsigned NOT NULL,
     type_id INT(20) unsigned NOT NULL,
     created_at TIMESTAMP NULL DEFAULT NULL,
     updated_at TIMESTAMP NULL DEFAULT NULL,
     CONSTRAINT PK_MATCHUPS PRIMARY KEY (id),
     CONSTRAINT FK_MATCHUP_LEAGUE FOREIGN KEY (league_id) REFERENCES leagues(id),
+    CONSTRAINT FK_MATCHUP_SEASON FOREIGN KEY (season_id) REFERENCES seasons(id),
     CONSTRAINT FK_MATCHUP_WEEK FOREIGN KEY (week_id) REFERENCES weeks(id),
     CONSTRAINT FK_MATCHUP_TYPE FOREIGN KEY (type_id) REFERENCES matchup_types(id)
 );
