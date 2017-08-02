@@ -10,7 +10,7 @@ var vue = new Vue({
                 player: this.model.player.id,
                 drops: []
             }).then(response => {
-                methods.axiosOnResponse(response);
+                window.methods.axiosOnResponse(response.data);
             });
         },
         drop: function(){
@@ -19,7 +19,7 @@ var vue = new Vue({
                 player: this.model.player.id,
                 drops: []
             }).then(response => {
-                methods.axiosOnResponse(response);
+                window.methods.axiosOnResponse(response.data);
             });
         },
         trade: function(){
@@ -28,7 +28,7 @@ var vue = new Vue({
                 player: this.model.player.id,
                 drops: []
             }).then(response => {
-                methods.axiosOnResponse(response);
+                window.methods.axiosOnResponse(response.data);
             });
         },
     },

@@ -33,10 +33,7 @@ Vue.use(ClientTable, {
 //     compileTemplates: true,
 // });
 
-require('./addins');
-
-var methods = {
-    
+window.methods = {
     axiosOnResponse: function(data){
         if(data.hasError){
             alert(data.message);
@@ -47,3 +44,6 @@ var methods = {
         }
     }
 }
+
+require('./addins');
+

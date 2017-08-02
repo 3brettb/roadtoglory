@@ -21,6 +21,6 @@ class PlayerController extends Controller
     }
 
     public function add(Request $request){
-        PlayerManager::add($request);
+        return PlayerManager::add($request);
     }
 }

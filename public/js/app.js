@@ -52838,10 +52838,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_tables_2__["ClientTable"], {
 //     compileTemplates: true,
 // });
 
-__webpack_require__("./resources/assets/js/addins.js");
-
-var methods = {
-
+window.methods = {
     axiosOnResponse: function axiosOnResponse(data) {
         if (data.hasError) {
             alert(data.message);
@@ -52851,6 +52848,8 @@ var methods = {
         }
     }
 };
+
+__webpack_require__("./resources/assets/js/addins.js");
 
 /***/ }),
 

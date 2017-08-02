@@ -65,21 +65,21 @@
         function revoke(){
             if (confirm("Are you sure you want to revoke this trade?") == true) {
                 axios.delete("{{route('trade.destroy', [$trade])}}").then(response => {
-                    methods.axiosOnResponse(response.data);
+                    window.methods.axiosOnResponse(response.data);
                 });
             }
         }
         function accept(){
             if (confirm("Are you sure you want to accept this trade?") == true) {
                 axios.post("{{route('trade.accept', [$trade])}}").then(response => {
-                    methods.axiosOnResponse(response.data);
+                    window.methods.axiosOnResponse(response.data);
                 });
             }
         }
         function reject(){
             if (confirm("Are you sure you want to reject this trade?") == true) {
                 axios.post("{{route('trade.reject', [$trade])}}").then(response => {
-                    methods.axiosOnResponse(response.data);
+                    window.methods.axiosOnResponse(response.data);
                 });
             }
         }
