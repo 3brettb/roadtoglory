@@ -23,14 +23,19 @@ require('./bootstrap');
 // });
 
 import {ServerTable, ClientTable, Event} from 'vue-tables-2';
-Vue.use(ClientTable, {}, false, null); 
-//var VueTables = require('vue-tables');
-//Vue.use(VueTables.client);
+Vue.use(ClientTable, {
+    filterByColumn: true,
+    compileTemplates: true,
+}, false, null); 
+// var VueTables = require('vue-tables');
+// Vue.use(VueTables.client, {
+//     filterByColumn: true,
+//     compileTemplates: true,
+// });
 
-Vue.component('trade-create-overview', {props: ['trade'], template: require('./components/views/trade/create.html')});
+require('./addins');
 
-
-methods = {
+var methods = {
     
     axiosOnResponse: function(data){
         if(data.hasError){

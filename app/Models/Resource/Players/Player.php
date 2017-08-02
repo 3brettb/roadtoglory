@@ -5,11 +5,11 @@ namespace App\Models\Resource\Players;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
-class PlayerData extends Model
+class Player extends Model
 {
     protected $connection = 'players';
 
-    public $table = 'players';
+    public $table = 'player';
 
     /**
      * The attributes that are mass assignable.
@@ -67,6 +67,10 @@ class PlayerData extends Model
 
     public function status(){
         return $this->status;
+    }
+
+    public function leagues(){
+        return $this->belongsToMany(\App\Models\League::class, env('ROADTOGLORY_DATABASE').'.players', 'player_data_id', 'league_id')->withPivot(['team_id']);
     }
 
 }

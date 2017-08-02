@@ -1,21 +1,4 @@
-// Vue.use(VueTables.client, {
-//   compileTemplates: true,
-//   //highlightMatches: true,
-//   //pagination: {
-//   // dropdown:true
-//   // chunk:5
-//   // },
-//   filterByColumn: true,
-//   texts: {
-//     filter: "Search:"
-//   },
-//   datepickerOptions: {
-//     showDropdowns: true
-//   }
-//   //skin:''
-// });
-
-new Vue({
+var vue = new Vue({
   el: "#people",
   ready: function() {
     this.$on('vue-tables.row-click', function(row) {
@@ -26,9 +9,24 @@ new Vue({
     deleteMe: function(id) {
       alert("Delete " + id);
     },
+
+    move: function(){
+        window.location = routes['player.move']+"/"+this.selected.id;
+    },
+
+    info: function() {
+        window.open(routes['player.show']+"/"+this.selected.id, '_blank'); 
+    },
+
+    clear: function(event){
+        $('.select-player:checked').prop('checked', false);
+        $("tr.selected").removeClass('selected');
+        this.selected = null;
+    },
   },
   data: {
-    columns: ['firstname', 'lastname', 'position', 'teamAbbr', 'owner', 'status'],
+    selected: null,
+    columns: ['select', 'firstname', 'lastname', 'position', 'teamAbbr', 'owner', 'status'],
     options: {
       headings: {
         firstname: 'First',
@@ -36,18 +34,27 @@ new Vue({
         position: "POS",
         teamAbbr: "NFL",
         status: 'Status',
-        edit: 'Edit',
-        delete: 'Delete'
+        select: '',
       },
       templates: {
-        edit: function(row) {
-          return `<a href='#!/${row.id}/edit'><i class='glyphicon glyphicon-edit'></i></a>`
-        },
-        delete: function(row) {
-          return `<a href='javascript:void(0);' @click='$parent.deleteMe(${row.id})'><i class='glyphicon glyphicon-erase'></i></a>`
-
-        }
+        select: 'player-select',
       },
+      filterable: [
+        'firstname',
+        'lastname',
+        'position',
+        'teamAbbr',
+        'status',
+        'owner',
+      ],
+      sortable: [
+        'firstname',
+        'lastname',
+        'position',
+        'teamAbbr',
+        'status',
+        'owner',
+      ],
     },
     tableData: vue_model['players'],
   }

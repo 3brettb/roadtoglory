@@ -2044,6 +2044,45 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/views/player/index/select.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['data'],
+    methods: {
+        select: function select(event) {
+            var id = this.data.id;
+            console.log('Clicked: ' + id);
+
+            // Current
+            var checked = $(event.target).prop('checked');
+            var selected = $(event.target.parentElement.parentElement.parentElement).hasClass('selected');
+
+            // Clear
+            $('.select-player:checked').prop('checked', false);
+            $("tr.selected").removeClass('selected');
+
+            // Toggle
+            if (!selected) {
+                $(event.target.parentElement.parentElement.parentElement).addClass('selected');
+                this.$parent.$parent.selected = this.data;
+            } else {
+                this.$parent.$parent.selected = null;
+            }
+            $(event.target).prop('checked', checked);
+        }
+    }
+});
+
+/***/ }),
+
 /***/ "./node_modules/base64-js/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -38644,6 +38683,30 @@ if (false) {
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-b3847600\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/views/player/index/select.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('input', {
+    staticClass: "select-player",
+    attrs: {
+      "type": "checkbox"
+    },
+    on: {
+      "click": _vm.select
+    }
+  })
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-b3847600", module.exports)
+  }
+}
+
+/***/ }),
+
 /***/ "./node_modules/vue-pagination-2/compiled/Pagination.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -52722,6 +52785,17 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/assets/js/addins.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+// Vue component addins
+
+Vue.component('trade-create-overview', { props: ['trade'], template: __webpack_require__("./resources/assets/js/components/views/trade/create.html") });
+//Vue.component('player-select', {props: ['data'], template: require('./components/views/player/index/select.vue')})
+Vue.component('player-select', __webpack_require__("./resources/assets/js/components/views/player/index/select.vue"));
+
+/***/ }),
+
 /***/ "./resources/assets/js/app.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -52754,13 +52828,19 @@ Vue.component('example', __webpack_require__("./resources/assets/js/components/E
 // });
 
 
-Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_tables_2__["ClientTable"], {}, false, null);
-//var VueTables = require('vue-tables');
-//Vue.use(VueTables.client);
+Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_tables_2__["ClientTable"], {
+    filterByColumn: true,
+    compileTemplates: true
+}, false, null);
+// var VueTables = require('vue-tables');
+// Vue.use(VueTables.client, {
+//     filterByColumn: true,
+//     compileTemplates: true,
+// });
 
-Vue.component('trade-create-overview', { props: ['trade'], template: __webpack_require__("./resources/assets/js/components/views/trade/create.html") });
+__webpack_require__("./resources/assets/js/addins.js");
 
-methods = {
+var methods = {
 
     axiosOnResponse: function axiosOnResponse(data) {
         if (data.hasError) {
@@ -52858,6 +52938,47 @@ if (false) {(function () {
     hotAPI.createRecord("data-v-6ed0a6b8", Component.options)
   } else {
     hotAPI.reload("data-v-6ed0a6b8", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/views/player/index/select.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
+  /* script */
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/views/player/index/select.vue"),
+  /* template */
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-b3847600\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/views/player/index/select.vue"),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "C:\\xampp\\htdocs\\roadtoglory.blackfiddle.net\\do_over\\root\\resources\\assets\\js\\components\\views\\player\\index\\select.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] select.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-b3847600", Component.options)
+  } else {
+    hotAPI.reload("data-v-b3847600", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true

@@ -52,8 +52,7 @@ class LeagueController extends Controller
     }
 
     public function settings(){
-        return view('dir.league.settings')
-            ->withSettings(LeagueManager::settings());
+        return view('dir.league.settings');
     }
 
     public function edit(){

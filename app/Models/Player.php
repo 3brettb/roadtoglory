@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 class Player extends Model
 {
+    protected $connection = 'roadtoglory';
+
     protected $table = 'players';
 
     /**
@@ -35,7 +37,7 @@ class Player extends Model
     }
 
     public function data(){
-        return $this->belongsTo(\App\ResourceModels\Player\PlayerData::class);
+        return $this->belongsTo(\App\ResourceModels\Player\Player::class);
     }
 
     public function owner(){

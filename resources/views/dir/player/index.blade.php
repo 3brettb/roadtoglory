@@ -17,20 +17,20 @@
 @endsection
 
 @section('content')
-    <div class="row">
+    <div class="row" id="people">
         <div class="col-md-2">
             <div class="row no-margin">
-                @include('dir.player.partials.search')
+                @include('dir.player.partials.search', ['collapse' => true])
             </div>
         </div>
         <div class="col-md-10">
             <div class="row no-margin">
                 @component('components.bars.action')
                     <div class="pull-left">
-                        <a id="add_player_btn" href="#" class="btn btn-success" disabled>Add</a>
-                        <a id="trade_player_btn" href="#" class="btn btn-warning" disabled>Trade</a>
-                        <a id="drop_player_btn" href="#" class="btn btn-danger" disabled>Drop</a>
-                        <a id="show_player_btn" href="#" class="btn btn-default" disabled>Player Information</a>
+                        <button @click="move" class="btn btn-success" :disabled="selected == null ? true : false">Add</button>
+                        {{--  <button @click="trade" class="btn btn-warning" :disabled="selected == null ? true : false">Trade</button>  --}}
+                        <button @click="move" class="btn btn-danger" :disabled="selected == null ? true : false">Drop</button>
+                        <button @click="info" class="btn btn-default" :disabled="selected == null ? true : false">Player Information</button>
                     </div>
                 @endcomponent
             </div>

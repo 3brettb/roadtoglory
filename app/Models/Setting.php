@@ -15,7 +15,7 @@ class Setting extends Model
      * @var array
      */
     protected $fillable = [
-        'league_id', 'type_id', 'name', 'value', 'reference_type', 'reference_id',
+        'league_id', 'type_id', 'category_id', 'name', 'value', 'reference_type', 'reference_id',
     ];
 
     public function routeto(){

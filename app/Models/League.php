@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Helpers\Models\LeagueHelper;
 
+use App\Models\Resource\Players\Player as SystemPlayer;
+
 class League extends Model
 {
     protected $table = 'leagues';
@@ -41,6 +43,10 @@ class League extends Model
 
     public function teams(){
         return $this->hasMany(Team::class);
+    }
+
+    public function players(){
+        return $this->belongsToMany(SystemPlayer::class, env('ROADTOGLORY_DATABASE').'.players', 'league_id', 'player_data_id')->withPivot(['team_id']);
     }
 
     public function chats(){

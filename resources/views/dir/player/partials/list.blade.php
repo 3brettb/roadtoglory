@@ -1,16 +1,18 @@
-<div id="people" class="player-list container">
-    @component('components.box.default', ['title' => 'Players'])
+<div class="player-list">
+    @component('components.box.default', ['title' => 'Players', 'collapse' => true])
         @slot('body')
-            <v-client-table :data="tableData" :columns="columns" :options="options"></v-client-table>
+            <v-client-table :data="tableData" :columns="columns" :options="options" @filter="clear"></v-client-table>
         @endslot
     @endcomponent
 </div> 
 
 @push('style')
     #people {
-        text-align: center;
-        width: 95%;
-        margin: 0 auto;
+        width: 100%;
+    }
+
+    tr.selected {
+        background-color: rgba(51, 122, 183, 0.41) !important;
     }
 
     h2 {
@@ -74,4 +76,9 @@
 
 @push('vue')
     <script src="{{URL::asset('vue/views/player/datatable.js')}}"></script>
+@endpush
+
+@push('js_routes')
+    routes['player.show'] = "{{url('/player')}}";
+    routes['player.move'] = "{{url('/player/move')}}";
 @endpush

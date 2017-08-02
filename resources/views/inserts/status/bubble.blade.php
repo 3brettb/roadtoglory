@@ -8,10 +8,13 @@
             case "Approved":
             case "Processed":
             case "Accepted":
+            case "ACT":
+            case "Healthy":
                 $labelcolor = "label-success"; break;
             case "Away":
             case "Paused":
             case "Pending":
+            case "UFA":
                 $labelcolor = "label-warning"; break;
             case "Offline":
             case "Inactive":
@@ -20,6 +23,8 @@
             case "Vetoed":
             case "Rejected":
             case "Denied":
+            case "CUT":
+            case "Injured Reserve":
                 $labelcolor = "label-danger"; break;
             case "Upcoming":
             case "Waiting":
@@ -41,4 +46,4 @@
         }
     }
 ?>
-<span class="label {{$labelcolor}} {{$class or ''}}">{{$status}}</span>
+<span class="label {{$labelcolor or 'label-default'}} {{$class or ''}}">{{$status}}</span>

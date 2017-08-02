@@ -321,15 +321,16 @@ CREATE TABLE settings (
     id INT(20) unsigned NOT NULL AUTO_INCREMENT,
     league_id INT(20) unsigned NOT NULL,
     type_id INT(20) unsigned NOT NULL,
+    category_id INT(20) unsigned NOT NULL,
     name VARCHAR(100) NOT NULL,
     value LONGTEXT NOT NULL,
-    reference_type VARCHAR(255) NULL,
-    reference_id INT(20) unsigned NULL,
+    description VARCHAR(255) NULL,
     created_at TIMESTAMP NULL DEFAULT NULL,
     updated_at TIMESTAMP NULL DEFAULT NULL,
     CONSTRAINT PK_SETTINGS PRIMARY KEY (id),
     CONSTRAINT FK_LEAGUE_SETTING FOREIGN KEY (league_id) REFERENCES leagues(id),
-    CONSTRAINT FK_SETTING_TYPE FOREIGN KEY (type_id) REFERENCES setting_types(id)
+    CONSTRAINT FK_SETTING_TYPE FOREIGN KEY (type_id) REFERENCES setting_types(id),
+    CONSTRAINT FK_SETTING_CATEGORY FOREIGN KEY (category_id) REFERENCES setting_categories(id)
 );
 
 CREATE TABLE poll_types (

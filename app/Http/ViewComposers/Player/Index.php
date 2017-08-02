@@ -5,7 +5,7 @@ namespace App\Http\ViewComposers\Player;
 use Illuminate\View\View;
 
 use App\Models\Player;
-use App\Models\Resource\Players\PlayerData as SystemPlayer;
+use App\Models\Resource\Players\Player as SystemPlayer;
 
 class Index
 {
