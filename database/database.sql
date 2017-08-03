@@ -116,11 +116,12 @@ CREATE TABLE roster_players (
     player_id INT(20) unsigned NOT NULL,
     roster_id INT(20) unsigned NOT NULL,
     week_stat_id INT(20) unsigned NULL,
+    starter BOOLEAN NOT NULL,
+    position INT(4) NOT NULL,
     score INT(5) NULL,
     created_at TIMESTAMP NULL DEFAULT NULL,
     updated_at TIMESTAMP NULL DEFAULT NULL,
     CONSTRAINT PK_ROSTER_PLAYERS PRIMARY KEY (id),
-    CONSTRAINT FK_PLAYER_REF FOREIGN KEY (player_id) REFERENCES players(id),
     CONSTRAINT FK_ROSTER_REF FOREIGN KEY (roster_id) REFERENCES rosters(id),
     CONSTRAINT FK_ROSTER_PLAYER_STATS FOREIGN KEY (week_stat_id) REFERENCES week_stats(id)
 );
