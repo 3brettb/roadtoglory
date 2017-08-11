@@ -15,7 +15,7 @@ class RosterPlayer extends Pivot
      * @var array
      */
     protected $fillable = [
-        'player_id', 'roster_id', 'week_stat_id', 'score',
+        'player_id', 'roster_id', 'week_stat_id', 'score', 'position_id', 'place'
     ];
 
     public function toString(){
@@ -31,11 +31,15 @@ class RosterPlayer extends Pivot
     }
 
     public function player(){
-        return $this->belongsTo(Player::class);
+        return $this->belongsTo(SystemPlayer::class);
     }
 
     public function roster(){
         return $this->belongsTo(Roster::class);
+    }
+
+    public function position(){
+        return $this->belongsTo(Position::class);
     }
 
     public function stats(){

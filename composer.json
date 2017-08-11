@@ -21,8 +21,7 @@
             "app/Helpers/System/system.php",
             "app/Helpers/Players/players.php",
             "app/Helpers/general.php",
-            "app/Helpers/helpers.php",
-            "app/Helpers/team.php"
+            "app/Helpers/helpers.php"
         ],
         "classmap": [
             "database"

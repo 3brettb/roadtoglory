@@ -9,7 +9,7 @@
 @endsection
 
 @section('pagetitle')
-    <h1>{{league()->season->year}} {{league()->name}} Rankings 
+    <h1>{{season()->year}} {{league()->name}} Rankings 
         @if($rankings)
             <small>Week {{$rankings->week->number}}</small>
         @endif

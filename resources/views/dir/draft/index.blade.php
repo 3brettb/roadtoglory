@@ -22,7 +22,7 @@
         <div class="col-md-12">
             @component('components.bars.action')
                  <div class="pull-left">
-                    {!! Form::select('season', league()->seasons->pluck('year', 'id'), league()->season_id, ['class="action-control"']) !!}
+                    {!! Form::select('season', league()->seasons->pluck('year', 'id'), season()->id, ['class="action-control"']) !!}
                     @if($draft->completed)
                         {!! Form::select('rounds', $draft->rounds, null, ['class="action-control"']) !!}
                         {!! Form::select('team', $draft->teams, null, ['class="action-control"']) !!}

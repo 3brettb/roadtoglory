@@ -6,6 +6,7 @@ use Illuminate\View\View;
 use App\Helpers\DataObject;
 
 use App\Models\Team;
+use App\ViewModels\Roster as RosterViewModel;
 
 class Show
 {
@@ -61,7 +62,7 @@ class Show
     }
 
     private function getRoster(){
-        $roster = $this->team->players;
+        $roster = new RosterViewModel($this->team);
         return $roster;
     }
 

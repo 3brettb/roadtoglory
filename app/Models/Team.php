@@ -51,7 +51,11 @@ class Team extends Model
     }
 
     public function getDivisionAttribute(){
-        return $this->divisions()->where('season_id', league()->season->id)->first();
+        return $this->divisions()->where('season_id', season()->id)->first();
+    }
+
+    public function getRosterAttribute(){
+        return $this->rosters()->where('week_id', current_week()->id)->first();
     }
 
     public function record(){

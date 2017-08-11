@@ -18,7 +18,7 @@ class League extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'season_id', 'user_id',
+        'name', 'week_id', 'user_id',
     ];
 
     public function routeto(){
@@ -33,8 +33,8 @@ class League extends Model
         return $this->belongsTo(\App\User::class);
     }
 
-    public function season(){
-        return $this->belongsTo(Season::class);
+    public function week(){
+        return $this->belongsTo(Week::class);
     }
 
     public function seasons(){

@@ -9,7 +9,7 @@ use App\Models\Types\SettingCategory;
 class Settings 
 {
 
-    private $defaults = [
+    private static $defaults = [
         // Operations
         'TRADING_ACTIVE' => ['type' => 2, 'category' => 8, 'value' => 1],
         'OFFSEASON_ACTIVE' => ['type' => 2, 'category' => 8, 'value' => 1],
@@ -30,7 +30,7 @@ class Settings
         'STARTING_RUNNING_BACK' => ['type' => 5, 'category' => 5, 'value' => 0],
         'STARTING_WIDE_RECEIVER' => ['type' => 5, 'category' => 5, 'value' => 2],
         'STARTING_TIGHT_END' => ['type' => 5, 'category' => 5, 'value' => 0],
-        'STARTING_RB_TE' => ['type' => 5, 'category' => 5, 'value' => 1],
+        'STARTING_RB_WR' => ['type' => 5, 'category' => 5, 'value' => 1],
         'STARTING_TE_WR' => ['type' => 5, 'category' => 5, 'value' => 1],
         'STARTING_FLEX' => ['type' => 5, 'category' => 5, 'value' => 1],
         'STARTING_KICKER' => ['type' => 5, 'category' => 5, 'value' => 1],
@@ -49,7 +49,7 @@ class Settings
         
         // Waivers
         'WAIVER_BY_DAY' => ['type' => 2, 'category' => 6, 'value' => 1],
-        'WAIVER_UNLOCK' => ['type' => 8, 'category' => 6, 'value' => ], // Multivalue
+        'WAIVER_UNLOCK' => ['type' => 8, 'category' => 6, 'value' => ''], // Multivalue
         'WAIVER_RETENTION_TIME' => ['type' => 1, 'category' => 6, 'value' => 6],
         
         // Trading
@@ -67,8 +67,8 @@ class Settings
         'ADMIN_APPROVE_VOTES' => ['type' => 5, 'category' => 7, 'value' => 3],
         'ADMIN_VETO_VOTES' => ['type' => 5, 'category' => 7, 'value' => 3],
         'TRADE_AUTO_PROCESS' => ['type' => 2, 'category' => 7, 'value' => 0],
-        'TRADE_PROCESS' => ['type' => 8, 'category' => 7, 'value' => ], // Multivalue
-        'TRADE_PRIOR_SUBMIT_DEADLINE' => ['type' => 7, 'category' => , 'value' => ],
+        'TRADE_PROCESS' => ['type' => 8, 'category' => 7, 'value' => ''], // Multivalue
+        'TRADE_PRIOR_SUBMIT_DEADLINE' => ['type' => 1, 'category' => 7, 'value' => null],
         
         // Scoring
         'QUARTERBACK_PASS_YARDS' => ['type' => 5, 'category' => 1, 'value' => 25],
@@ -137,5 +137,20 @@ class Settings
         'SEASON_START_WEEK' => ['type' => 5, 'category' => 2, 'value' => 1],
         'SEASON_END_WEEK' => ['type' => 5, 'category' => 2, 'value' => 13],
     ];
+
+
+
+    public static function generateDeafaults($league)
+    {
+        foreach(self::$defaults as $setting => $values)
+        {
+            $league->settings()->create([
+                'name' => $setting,
+                'type_id' => $values['type'],
+                'category_id' => $values['category'],
+                'value' => $values['value'],
+            ]);
+        }
+    }
 
 }

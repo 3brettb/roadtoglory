@@ -2,10 +2,11 @@
     @component('components.box.default', ['title' => 'Information', 'collapse' => true])
         @slot('body')
             <ul>
-                @foreach($weeks as $week)
+                @foreach($matchups as $matchup)
+                    <?php $week = $matchup->week; ?>
                     <li>
                         <span class="pull-left">Week {{$week->number}}({{$week->nflweek}})</span>
-                        <span class="pull-right">{{$week->result}} {{$week->matchup->score}}</span>
+                        <span class="pull-right">{{$matchup->result}}</span>
                     </li>
                 @endforeach
             </ul>

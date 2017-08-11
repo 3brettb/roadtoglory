@@ -15,3 +15,11 @@
     function teams(){
         return league()->teams;
     }
+
+    function current_week(){
+        return league()->week;
+    }
+
+    function season(){
+        return current_week()->season;
+    }

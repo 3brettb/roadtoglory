@@ -21,8 +21,8 @@
             <th class="right">Average</th>
             <th class="right">Projection</th>
         </tr>
-        @foreach($players as $player)
-            <tr class="{{($player->exists) ? 'filled' : 'empty'}}" data-requirements="{{$player->slot->requirements}}">
+        @foreach($slots as $slot)
+            {{--  <tr class="{{($player->exists) ? 'filled' : 'empty'}}" data-requirements="{{$player->slot->requirements}}">
                 <td class="center">
                     <a href="#" data-id="{{$player->id or '-1'}}" class="btn btn-default player-action" style="padding: 2px 7px;">Move/Select</a>
                 </td>
@@ -34,7 +34,42 @@
                 <td class="right">{{$player->season or ''}}</td>
                 <td class="right">{{$player->average or ''}}</td>
                 <td class="right">{{$player->projected->season or ''}}</td>
-            </tr>
+            </tr>  --}}
+            @if($slot->hasPlayer())
+                <tr class="filled" data-requirements="{{$slot->requirements}}">
+                    <td class="center">
+                        <a data-id="{{$slot->player->id}}" class="btn btn-default player-action" style="padding: 2px 7px;">Move/Select</a>
+                    </td>
+                    <td class="left">{{$slot->name}}</td>
+                    <td class="left divider">{{$slot->player->display('{L}, {F} {N} {P}')}}</td>
+                    <td class="center">{{$slot->current or ''}}</td>
+                    <td class="center">{{$slot->score or ''}}</td>
+                    <td class="center divider">{{$slot->projected->week or ''}}</td>
+                    <td class="right">{{$slot->season or ''}}</td>
+                    <td class="right">{{$slot->average or ''}}</td>
+                    <td class="right">{{$slot->projected->season or ''}}</td>
+                </tr>
+            @else
+                <tr class="empty" data-requirements="{{$slot->requirements}}">
+                    <td class="center">
+                        <a data-id="" class="btn btn-default player-action" style="padding: 2px 7px; visibility: hidden;">Here</a>
+                    </td>
+                    <td class="left">{{$slot->name}}</td>
+                </tr>
+            @endif
         @endforeach
     </table>
 </div>
+
+<script>
+
+    $("a.player-action").on('click', function(tag){
+        console.log(tag);
+    });
+
+    function getRow(tag)
+    {
+        
+    }
+
+</script>

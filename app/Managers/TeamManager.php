@@ -44,13 +44,14 @@ class TeamManager extends Manager
         $standing->league = new StandingViewModel($team);
         $standing->division = new StandingViewModel($team);
 
-        $matchups = $team->matchups()->where('season_id', league()->season->id)->get();
+        $matchups = $team->matchups()->where('season_id', season()->id)->get();
         foreach($matchups as $matchup)
         {
             $matchup = new MatchupViewModel($matchup);
             $standing->league->addMatchup($matchup);
             if($matchup->division) $standing->division->addMatchup($matchup);
         }
+        $standing->matchups = $standing->league->matchups;
         return $standing;
     }
 }

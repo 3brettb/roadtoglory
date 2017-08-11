@@ -114,4 +114,20 @@ class Matchup extends Model
         return (sizeof($this->losers) > 0) ? $this->losers[0] : null;
     }
 
+    public function getResultAttribute()
+    {
+        if($this->hasTeam) return $this->getTeamResult();
+        else return $this->getGroupResult();
+    }
+
+    public function getTeamResult()
+    {
+        return $this->team->status." ".$this->team->points->for." - ".$this->team->points->against;
+    }
+
+    public function getGroupResult()
+    {
+        return "Group Result score";
+    }
+
 }

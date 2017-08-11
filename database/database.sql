@@ -17,13 +17,13 @@ CREATE TABLE users (
 CREATE TABLE leagues (
     id INT(20) unsigned NOT NULL AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
-    season_id INT(20) unsigned NULL,
+    week_id INT(20) unsigned NULL,
     user_id INT(20) unsigned NOT NULL, 
     created_at TIMESTAMP NULL DEFAULT NULL,
     updated_at TIMESTAMP NULL DEFAULT NULL,
     CONSTRAINT PK_LEAGUES PRIMARY KEY (id),
     CONSTRAINT FK_LEAGUE_OWNER FOREIGN KEY (user_id) REFERENCES users(id),
-    CONSTRAINT FK_CURRENT_SEASON FOREIGN KEY (season_id) REFERENCES seasons(id)
+    CONSTRAINT FK_CURRENT_WEEK FOREIGN KEY (week_id) REFERENCES weeks(id)
 );
 
 CREATE TABLE seasons (
@@ -111,18 +111,29 @@ CREATE TABLE players (
     CONSTRAINT FK_TEAM_PLAYER FOREIGN KEY (team_id) REFERENCES teams(id)
 );
 
+CREATE TABLE positions (
+    id INT(20) unsigned NOT NULL AUTO_INCREMENT,
+    name VARCHAR(50) NOT NULL,
+    requirements VARCHAR(255) NULL,
+    starter BOOLEAN NULL,
+    created_at TIMESTAMP NULL DEFAULT NULL,
+    updated_at TIMESTAMP NULL DEFAULT NULL,
+    CONSTRAINT PK_POSITIONS PRIMARY KEY (id)
+);
+
 CREATE TABLE roster_players (
     id INT(20) unsigned NOT NULL AUTO_INCREMENT,
     player_id INT(20) unsigned NOT NULL,
     roster_id INT(20) unsigned NOT NULL,
     week_stat_id INT(20) unsigned NULL,
-    starter BOOLEAN NOT NULL,
-    position INT(4) NOT NULL,
+    position_id INT(20) unsigned NOT NULL,
+    place INT(4) NULL,
     score INT(5) NULL,
     created_at TIMESTAMP NULL DEFAULT NULL,
     updated_at TIMESTAMP NULL DEFAULT NULL,
     CONSTRAINT PK_ROSTER_PLAYERS PRIMARY KEY (id),
     CONSTRAINT FK_ROSTER_REF FOREIGN KEY (roster_id) REFERENCES rosters(id),
+    CONSTRAINT FK_ROSTER_POSITION FOREIGN KEY (position_id) REFERENCES positions(id),
     CONSTRAINT FK_ROSTER_PLAYER_STATS FOREIGN KEY (week_stat_id) REFERENCES week_stats(id)
 );
 
@@ -324,7 +335,7 @@ CREATE TABLE settings (
     type_id INT(20) unsigned NOT NULL,
     category_id INT(20) unsigned NOT NULL,
     name VARCHAR(100) NOT NULL,
-    value LONGTEXT NOT NULL,
+    value LONGTEXT NULL,
     description VARCHAR(255) NULL,
     created_at TIMESTAMP NULL DEFAULT NULL,
     updated_at TIMESTAMP NULL DEFAULT NULL,
