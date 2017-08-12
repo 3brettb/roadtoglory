@@ -25,7 +25,7 @@
             @if($slot->hasPlayer())
                 <tr class="roster-row filled {{$type or 'bench'}}" data-requirements="{{$slot->requirements}}" data-playerid="{{$slot->player->id}}" data-position="{{$slot->player->position}}">
                     <td class="center">
-                        <a class="btn btn-default player-action handle visible" style="padding: 2px 7px;">Move/Select</a>
+                        <a class="btn btn-default handle visible open" style="padding: 2px 7px;">Move/Select</a>
                     </td>
                     <td class="left">{{$slot->name}}</td>
                     <td class="left divider">{{$slot->player->display('{L}, {F} {N} {P}')}}</td>
@@ -39,7 +39,7 @@
             @else
                 <tr class="roster-row empty {{$type}}" data-requirements="{{$slot->requirements}}" data-playerid="" data-position="">
                     <td class="center">
-                        <a class="btn btn-success player-target handle" style="padding: 2px 7px;">Here</a>
+                        <a class="btn btn-success handle" style="padding: 2px 7px;">Here</a>
                     </td>
                     <td class="left">{{$slot->name}}</td>
                 </tr>
@@ -47,7 +47,7 @@
         @endforeach
         <tr class="roster-row extra {{$type}}" data-requirements="" data-playerid="" data-position="">
             <td class="center">
-                <a class="btn btn-success player-target handle" style="padding: 2px 7px; display: block">Here</a>
+                <a class="btn btn-success handle" style="padding: 2px 7px; display: block">Here</a>
             </td>
         </tr>
     </table>

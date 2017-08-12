@@ -20,13 +20,13 @@
     <script src="{{URL::asset('js/resources/roster.js')}}"></script>
     <script>
 
-        $("a.player-action").on('click', function(event){
-            Roster.onPlayerSelect(this, event);
+        $("a.handle").on('click', function(event){
+            if($(this).hasClass('open')){
+                Roster.onPlayerSelect(this, event);
+            } else if ($(this).hasClass('target') && $(this).hasClass('visible')) {
+                Roster.onTargetSelect(this, event);
+            }
         });
 
-        $("a.player-target.target-visible").on('click', function(event){
-            Roster.onTargetSelect(this, event);
-        });
-        
     </script>
 @endpush

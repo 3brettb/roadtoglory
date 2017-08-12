@@ -26,18 +26,18 @@ var Roster = {
     selected: null,
 
     onPlayerSelect: function(handle, event){
-        this.setSelected(handle);
+        this.toggleSelected(handle);
         (this.selected == null) ? this.hideTargets() : this.showTargets();
     },
 
     onTargetSelect: function(handle, event){
         target = this.getRow(handle);
         this.makeSwap(target);
-        this.selected = null;
+        this.toggleSelected(handle);
         this.hideTargets();
     },
     
-    setSelected: function(handle){
+    toggleSelected: function(handle){
         if(this.selected == null){
             this.selected = this.getRow(handle);
             $(this.selected.self).addClass('selected');
@@ -55,7 +55,7 @@ var Roster = {
             handle = $(this).find('a.handle')[0];
             row = self.createRowObject(this, handle);
 
-            if($(this).hasClass('extra bench')){
+            if($(this).hasClass('extra') && $(this).hasClass('bench')){
 
                 $(this).css('display', 'table-row');
                 self.showHandle(handle);
@@ -92,6 +92,8 @@ var Roster = {
 
                 $(handle).html('Move/Select');
                 $(handle).addClass('visible');
+                $(handle).removeClass('target');
+                $(handle).addClass('open');
                 self.handleGrey(handle);
 
             }
@@ -99,6 +101,22 @@ var Roster = {
     },
 
     makeSwap: function(target){
+        temp_tgt = target.self;
+        temp_sel = this.selected.self;
+        
+        tgt_data = $(target.self).data();
+        sel_data = $(this.selected.self).data();
+
+        // Swap Data Properties
+        $(temp_tgt).data(sel_data);
+        $(temp_sel).data(tgt_data);
+        
+        // Swap Rows
+        sel_act = $(temp_sel).clone();
+        $(sel_act).insertAfter($(temp_sel));
+        $(temp_sel).insertAfter($(temp_tgt));
+        $(temp_tgt).insertAfter($(sel_act));
+        $(sel_act).remove();
 
         this.storeSwap();
     },
@@ -118,6 +136,8 @@ var Roster = {
     showHandle: function(handle){
         this.handleGreen(handle);
         $(handle).addClass("visible");
+        $(handle).addClass("target");
+        $(handle).removeClass("open");
         $(handle).html("Here");
     },
 
