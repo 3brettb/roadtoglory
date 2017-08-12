@@ -11,7 +11,7 @@
             <th colspan=3 scope="colgroup" class="center">Season</th>
         </tr>
         <tr>
-            <th class="center" style="width: 10px;">Action</th>
+            <th class="center" style="width: 88px;">Action</th>
             <th class="left">Slot</th>
             <th class="left divider">Last, First Team POS</th>
             <th class="center">Current</th>
@@ -22,23 +22,10 @@
             <th class="right">Projection</th>
         </tr>
         @foreach($slots as $slot)
-            {{--  <tr class="{{($player->exists) ? 'filled' : 'empty'}}" data-requirements="{{$player->slot->requirements}}">
-                <td class="center">
-                    <a href="#" data-id="{{$player->id or '-1'}}" class="btn btn-default player-action" style="padding: 2px 7px;">Move/Select</a>
-                </td>
-                <td class="left">{{$player->slot->name}}</td>
-                <td class="left divider">{{($player->exists) ? $player->display('{L}, {F} {N} {P}') : ''}}</td>
-                <td class="center">{{$player->game or ''}}</td>
-                <td class="center">{{$player->score or ''}}</td>
-                <td class="center divider">{{$player->projected->week or ''}}</td>
-                <td class="right">{{$player->season or ''}}</td>
-                <td class="right">{{$player->average or ''}}</td>
-                <td class="right">{{$player->projected->season or ''}}</td>
-            </tr>  --}}
             @if($slot->hasPlayer())
-                <tr class="filled" data-requirements="{{$slot->requirements}}">
+                <tr class="roster-row filled {{$type or 'bench'}}" data-requirements="{{$slot->requirements}}" data-playerid="{{$slot->player->id}}" data-position="{{$slot->player->position}}">
                     <td class="center">
-                        <a data-id="{{$slot->player->id}}" class="btn btn-default player-action" style="padding: 2px 7px;">Move/Select</a>
+                        <a class="btn btn-default player-action handle visible" style="padding: 2px 7px;">Move/Select</a>
                     </td>
                     <td class="left">{{$slot->name}}</td>
                     <td class="left divider">{{$slot->player->display('{L}, {F} {N} {P}')}}</td>
@@ -50,26 +37,18 @@
                     <td class="right">{{$slot->projected->season or ''}}</td>
                 </tr>
             @else
-                <tr class="empty" data-requirements="{{$slot->requirements}}">
+                <tr class="roster-row empty {{$type}}" data-requirements="{{$slot->requirements}}" data-playerid="" data-position="">
                     <td class="center">
-                        <a data-id="" class="btn btn-default player-action" style="padding: 2px 7px; visibility: hidden;">Here</a>
+                        <a class="btn btn-success player-target handle" style="padding: 2px 7px;">Here</a>
                     </td>
                     <td class="left">{{$slot->name}}</td>
                 </tr>
             @endif
         @endforeach
+        <tr class="roster-row extra {{$type}}" data-requirements="" data-playerid="" data-position="">
+            <td class="center">
+                <a class="btn btn-success player-target handle" style="padding: 2px 7px; display: block">Here</a>
+            </td>
+        </tr>
     </table>
 </div>
-
-<script>
-
-    $("a.player-action").on('click', function(tag){
-        console.log(tag);
-    });
-
-    function getRow(tag)
-    {
-        
-    }
-
-</script>

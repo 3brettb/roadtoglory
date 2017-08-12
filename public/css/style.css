@@ -231,3 +231,16 @@ ul.rule.rule-contents-list {
 .box.rule-box .box-title{
     text-decoration: underline;
 }
+
+tr.selected {
+    background-color: lightgrey;
+}
+
+tr.roster-row.extra,
+a.handle {
+    display: none;
+}
+
+a.handle.visible {
+    display: block !important;
+}
