@@ -39,7 +39,11 @@
         <![endif]-->
 
         <!-- Scripts -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.min.js"></script>
+
+        <!-- vue.js for development -->
+        <!--<script src="{{ URL::asset('/js/vue.js') }}"></script>-->
+        <!-- vue.min.js for production -->
+        <script src="{{ URL::asset('/js/vue.min.js') }}"></script>
 
         @stack('head_script')
 

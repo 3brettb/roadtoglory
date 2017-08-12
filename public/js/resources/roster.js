@@ -21,7 +21,9 @@
 
 var Roster = {
 
-    moves: [],
+    hasChange: false,
+
+    hasSelected: false,
 
     selected: null,
 
@@ -43,8 +45,10 @@ var Roster = {
             $(this.selected.self).addClass('selected');
             this.handleYellow(handle);
             $(handle).html('Move');
+            this.hasSelected = true;
         } else {
             this.selected = null;
+            this.hasSelected = false;
             $('tr.selected').removeClass('selected');
         }
     },
@@ -55,24 +59,20 @@ var Roster = {
             handle = $(this).find('a.handle')[0];
             row = self.createRowObject(this, handle);
 
-            if($(this).hasClass('extra') && $(this).hasClass('bench')){
+            if($(this).hasClass('extra')){
 
                 $(this).css('display', 'table-row');
                 self.showHandle(handle);
             
-            } else if($(this).hasClass('starter')) {
-                
-                if($(this).hasClass('filled')){
-                
-                    if(self.allowed(self.selected, row) && self.allowed(row, self.selected)) self.showHandle(handle);
-                
-                } else {
-                
-                    if(self.allowed(self.selected, row)) self.showHandle(handle);
-                
-                }
+            } else if($(this).hasClass('filled')) {
 
-            } 
+                if(self.allowed(self.selected, row) && self.allowed(row, self.selected)) self.showHandle(handle);
+
+            } else {
+                
+                if(self.allowed(self.selected, row)) self.showHandle(handle);
+
+            }
         });
     },
     
@@ -103,33 +103,57 @@ var Roster = {
     makeSwap: function(target){
         temp_tgt = target.self;
         temp_sel = this.selected.self;
-        
-        tgt_data = $(target.self).data();
-        sel_data = $(this.selected.self).data();
-
-        // Swap Data Properties
-        $(temp_tgt).data(sel_data);
-        $(temp_sel).data(tgt_data);
-        
-        // Swap Rows
-        sel_act = $(temp_sel).clone();
-        $(sel_act).insertAfter($(temp_sel));
-        $(temp_sel).insertAfter($(temp_tgt));
-        $(temp_tgt).insertAfter($(sel_act));
-        $(sel_act).remove();
-
-        this.storeSwap();
+        if($(temp_tgt).hasClass('extra')){
+            if($(temp_sel).data('table') == 'starter'){
+                newTarget = this.getNewTarget(temp_tgt);
+                this.normalSwap(newTarget, temp_sel);
+            } else {
+                $(temp_sel).insertBefore($(temp_tgt));
+            }
+        } else if(
+            $(temp_tgt).data('table') == 'starter' && 
+            !$(temp_tgt).hasClass('filled') && 
+            $(temp_sel).data('table') != 'starter'){
+                this.normalSwap(temp_tgt, temp_sel);
+                $(temp_tgt).remove();
+        } else {
+            this.normalSwap(temp_tgt, temp_sel);
+        }
+        this.hasChange = true;
     },
 
-    storeSwap: function(){
+    normalSwap: function(a, b){
+        tgt_data = $.extend({}, $(a).data());
+        sel_data = $.extend({}, $(b).data());
 
+        tgt_slot = this.getSlot(a);
+        sel_slot = this.getSlot(b);
+
+        // Swap Data and Slot Properties
+        $(a).data('requirements', sel_data.requirements);
+        $(b).data('requirements', tgt_data.requirements);
+        $(a).data('table', sel_data.table);
+        $(b).data('table', tgt_data.table);
+        this.swap(tgt_slot, sel_slot);
+        
+        // Swap Rows
+        this.swap(b, a);
     },
 
     save: function(){
-
+        list = [];
+        $("tr.roster-row").each(function(i, item){
+            data = $(item).data();
+            list.push(data);
+        });
+        sendUpdate(list);
     },
 
     cancel: function(){
+        window.location.reload();
+    },
+
+    drop: function(){
 
     },
 
@@ -164,6 +188,22 @@ var Roster = {
         return this.createRowObject(parent, handle);
     },
 
+    getSlot: function(tr){
+        return $(tr).find('td.slot')[0];
+    },
+
+    getNewTarget: function(initial){
+        temp = $(initial).clone().insertBefore(initial);
+        $(temp).removeClass('extra');
+        $(temp).addClass('empty');
+        $(temp).attr('style', '');
+        handle = $(temp).find('a.handle')[0];
+        $(handle).removeClass('target');
+        $(handle).attr('style', 'padding: 2px 7px;');
+        $(handle).on('click', function(event){ handleOnClick(this, event) });
+        return temp;
+    },
+
     createRowObject: function(tr, handle){
         row = {
             playerid: $(tr).data('playerid'),
@@ -181,6 +221,14 @@ var Roster = {
         } else {
             return $.inArray(select.position, target.requirements) !== -1;
         }
+    },
+
+    swap: function(a, b){
+        temp = $(a).clone();
+        $(temp).insertAfter($(a));
+        $(a).insertAfter($(b));
+        $(b).insertAfter($(temp));
+        $(temp).remove();
     },
 
 }

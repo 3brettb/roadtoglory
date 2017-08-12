@@ -6,7 +6,7 @@
                 <h4>{{$team->display('{N} {M}')}}</h4>
                 <h5>League Record: {{$standing->league->wins}} - {{$standing->league->losses}}</h5>
                 <h5>Division Record: {{$standing->division->wins}} - {{$standing->division->losses}}</span></h5>
-                <h5>Rank: @{{$standing->rank}} | Points: {{$standing->league->points->for}}</span></h5>
+                <h5>Rank: @{{"$standing->rank"}} | Points: {{$standing->league->points->for}}</span></h5>
                 @if($team->owner == user())
                     <div class="btn btn-warning"><a class="text-white" href="#">Trading Block</a></div>
                 @else
