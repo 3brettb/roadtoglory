@@ -52845,6 +52845,8 @@ window.methods = {
         } else if (data.hasRedirect) {
             confirm(data.message);
             window.location = data.redirect;
+        } else {
+            confirm(data.message);
         }
     }
 };

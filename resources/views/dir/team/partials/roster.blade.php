@@ -34,7 +34,12 @@
         }
 
         function sendUpdate(roster){
-            console.log(roster);
+            axios.post("{{route('action.team.update')}}", {
+                list: roster,
+                rosterid: {{$roster->roster->id}},
+            }).then(response => {
+                methods.axiosOnResponse(response.data);
+            });
         }
 
         function updateView(){

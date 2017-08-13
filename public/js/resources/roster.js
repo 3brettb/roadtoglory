@@ -130,6 +130,8 @@ var Roster = {
         sel_slot = this.getSlot(b);
 
         // Swap Data and Slot Properties
+        $(a).data('pid', sel_data.pid);
+        $(b).data('pid', tgt_data.pid);
         $(a).data('requirements', sel_data.requirements);
         $(b).data('requirements', tgt_data.requirements);
         $(a).data('table', sel_data.table);
@@ -154,7 +156,7 @@ var Roster = {
     },
 
     drop: function(){
-
+        console.log('attempt drop player');
     },
 
     showHandle: function(handle){

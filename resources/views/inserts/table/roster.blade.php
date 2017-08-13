@@ -27,7 +27,7 @@
         </tr>
         @foreach($slots as $slot)
             @if($slot->hasPlayer())
-                <tr class="roster-row filled" data-requirements="{{$slot->requirements}}" data-playerid="{{$slot->player->id}}" data-position="{{$slot->player->position}}" data-table="{{$table or ''}}">
+                <tr class="roster-row filled" data-pid="{{$slot->position->id}}" data-requirements="{{$slot->requirements}}" data-playerid="{{$slot->player->id}}" data-position="{{$slot->player->position}}" data-table="{{$table or ''}}">
                     @if($roster->team->id == team()->id)
                         <td class="center">
                             <a class="btn btn-default handle visible open" style="padding: 2px 7px;">Move/Select</a>
@@ -43,7 +43,7 @@
                     <td class="right">{{$slot->projected->season or ''}}</td>
                 </tr>
             @else
-                <tr class="roster-row empty" data-requirements="{{$slot->requirements}}" data-playerid="" data-position="" data-table="{{$table or ''}}">
+                <tr class="roster-row empty" data-pid="{{$slot->position->id}}" data-requirements="{{$slot->requirements}}" data-playerid="" data-position="" data-table="{{$table or ''}}">
                     @if($roster->team->id == team()->id)
                         <td class="center">
                             <a class="btn btn-success handle" style="padding: 2px 7px;">Here</a>
@@ -54,7 +54,7 @@
             @endif
         @endforeach
         @if($roster->team->id == team()->id && isset($hasExtra))
-            <tr class="roster-row extra" data-requirements="" data-playerid="" data-position="" data-table="{{$table or ''}}">
+            <tr class="roster-row extra" data-pid="{{$slot->position->id}}" data-requirements="" data-playerid="" data-position="" data-table="{{$table or ''}}">
                 <td class="center">
                     <a class="btn btn-success handle" style="padding: 2px 7px; display: block">Here</a>
                 </td>
