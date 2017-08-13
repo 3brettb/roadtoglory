@@ -36,7 +36,7 @@ class Roster extends Model
 
     public function getBenchAttribute()
     {
-        return $this->slots->bench;
+        return $this->slots->bench->sortBy('place');
     }
 
     public function getIrAttribute()

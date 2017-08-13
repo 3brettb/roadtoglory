@@ -4,6 +4,7 @@ namespace App\Managers;
 
 use Illuminate\Http\Request;
 use App\Models\Roster;
+use App\Models\Pivots\RosterPlayer;
 use App\Models\Team;
 
 class RosterManager extends Manager
@@ -16,14 +17,14 @@ class RosterManager extends Manager
             $players = $roster->team->players;
             foreach($roster->players as $player)
             {
-                if(!contained_in($players, $player))
+                if(!contained_in_ids($players, $player))
                 {
                     $roster->players()->detach($player);
                 }
             }
             foreach($players as $player)
             {
-                if(!contained_in($roster->players, $player))
+                if(!contained_in_ids($roster->players, $player))
                 {
                     $roster->players()->attach($player, [
                         'position_id' => 10,

@@ -46,4 +46,9 @@ class RosterSlot extends Model
         $this->player = $player;
     }
 
+    public function setPlace($place)
+    {
+        $this->place = $place;
+    }
+
 }

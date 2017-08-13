@@ -48,12 +48,12 @@ class RosterSlots extends Model
             8 => $this->settings->where('name', 'STARTING_KICKER')->first()->value, //Kicker
             9 => $this->settings->where('name', 'STARTING_DEFENSE')->first()->value, //DEF
         ];
-        $loc = 0;
         foreach($this->starterslots as $id => $size)
         {
             for($i=0;$i<$size;$i++)
             {
-                $this->starter->push(new RosterSlot($this->getPosition($id), $loc++));
+                $slot = new RosterSlot($this->getPosition($id), $i+1);
+                $this->starter->push($slot);
             }
         }
     }
@@ -76,8 +76,15 @@ class RosterSlots extends Model
 
     public function addStarter(SystemPlayer $player, RosterPlayer $pivot)
     {
-        //dd($player, $player->pivot, $player->pivot->load('position'), $player->pivot->position);
-        $this->starter->push(new RosterSlot($pivot->position, $pivot->place, $player));
+        foreach($this->starter as $slot)
+        {
+
+            if($pivot->position->id == $slot->position->id && $pivot->place == $slot->place)
+            {
+                $slot->setPlayer($player);
+                return;
+            }
+        }
     }
 
     public function addBench(SystemPlayer $player, RosterPlayer $pivot)
