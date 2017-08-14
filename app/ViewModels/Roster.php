@@ -21,6 +21,8 @@ class Roster extends Model
 
     public $slots;
 
+    public $hasPlayers;
+
     public function __construct(Team $team, Week $week = null)
     {
         $this->team = $team;
@@ -53,7 +55,13 @@ class Roster extends Model
 
     private function updateRoster($team)
     {
-        $this->roster = RosterManager::update($team->roster);
+        if($team->roster) {
+            $this->roster = RosterManager::update($team->roster);
+            $this->hasPlayers = true;
+        }
+        else {
+            $this->hasPlayers = false;
+        }
     }
 
     private function getSlots()
@@ -63,9 +71,12 @@ class Roster extends Model
 
     private function place()
     {
-        foreach($this->roster->players as $player)
+        if($this->hasPlayers)
         {
-            $this->slots->addPlayer($player);
+            foreach($this->roster->players as $player)
+            {
+                $this->slots->addPlayer($player);
+            }
         }
     }
 
