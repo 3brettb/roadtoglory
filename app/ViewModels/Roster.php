@@ -50,6 +50,7 @@ class Roster extends Model
     {
         $this->updateRoster($team);
         $this->getSlots();
+        $this->roster->load('players');
         $this->place();
     }
 
