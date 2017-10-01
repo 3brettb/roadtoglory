@@ -6,6 +6,12 @@ use Illuminate\Support\Facades\Gate;
 use Laravel\Passport\Passport;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
+use App\User;
+use App\Models\Message;
+
+use App\Policies\AdminPolicy;
+use App\Policies\MessagePolicy;
+
 class AuthServiceProvider extends ServiceProvider
 {
     /**
@@ -14,7 +20,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Model' => 'App\Policies\ModelPolicy',
+        'App\User' => App\Policies\AdminPolicy::class,
     ];
 
     /**
@@ -29,6 +35,7 @@ class AuthServiceProvider extends ServiceProvider
         // For API Auth
         Passport::routes();
 
-        //
+        //Gates
+        Gate::define('access-admin-portal', 'App\Policies\AdminPolicy@accessAdminPortal');
     }
 }

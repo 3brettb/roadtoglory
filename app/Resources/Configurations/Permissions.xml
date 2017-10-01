@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<permissions>
+    <permission>
+        <name>ADMIN</name>
+        <title>Is Admin</title>
+        <description>Has All Priviledges (Owner(s))</description>
+        <default>false</default>
+        <bit>0</bit>
+    </permission>
+    <permission>
+        <name>MANAGER</name>
+        <title>Is Manager</title>
+        <description>Has All Priviledges except alter permissions</description>
+        <default>false</default>
+        <bit>1</bit>
+    </permission>
+    <permission>
+        <name>PORTAL_ACCESS</name>
+        <title>Has Portal Access</title>
+        <description>Can Access Admin Portal</description>
+        <default>false</default>
+        <bit>2</bit>
+    </permission>
+    <permission>
+        <name>ALTER_PERMISSIONS</name>
+        <title>Can Alter Permissions</title>
+        <description>Can Adjust Permissions for League Users</description>
+        <default>false</default>
+        <bit>3</bit>
+    </permission>
+    <permission>
+        <name>LEAGUE_MESSAGE_WRITE</name>
+        <title>Create League Messages</title>
+        <description>Can Author League Messages</description>
+        <default>true</default>
+        <bit>4</bit>
+    </permission>
+    <permission>
+        <name>LEAGUE_MESSAGE_COMMENT</name>
+        <title>Comment - League Messages</title>
+        <description>Can Post Comments to League Messages</description>
+        <default>true</default>
+        <bit>5</bit>
+    </permission>
+    <permission>
+        <name>ADMIN_MESSAGE_WRITE</name>
+        <title>Create Admin Messages</title>
+        <description>Can Author Admin Messages</description>
+        <default>false</default>
+        <bit>6</bit>
+    </permission>
+    <permission>
+        <name>ADMIN_MESSAGE_COMMENT</name>
+        <title>Comment - Admin Messages</title>
+        <description>Can Post Comments to Admin Messages</description>
+        <default>true</default>
+        <bit>7</bit>
+    </permission>
+    <permission>
+        <name>NEWSLETTER_WRITE</name>
+        <title>Create Newsletters</title>
+        <description>Can Author League Newsletters</description>
+        <default>false</default>
+        <bit>8</bit>
+    </permission>
+    <permission>
+        <name>NEWSLETTER_COMMENT</name>
+        <title>Comment - League Newsletters</title>
+        <description>Can Post Comments to League Newsletters</description>
+        <default>true</default>
+        <bit>9</bit>
+    </permission>
+    <permission>
+        <name>RANKINGS_OFFICIAL_CREATE</name>
+        <title>Create Official Rankings</title>
+        <description>Can Create Official Rankings</description>
+        <default>false</default>
+        <bit>10</bit>
+    </permission>
+    <permission>
+        <name>RANKINGS_OFFICIAL_COMMENT</name>
+        <title>Comment - Official Rankings</title>
+        <description>Can Post Comments to Official League Rankings</description>
+        <default>true</default>
+        <bit>11</bit>
+    </permission>
+    <permission>
+        <name>RANKINGS_USER_CREATE</name>
+        <title>Create User Rankings</title>
+        <description>Can Create User Rankings</description>
+        <default>false</default>
+        <bit>12</bit>
+    </permission>
+    <permission>
+        <name>RANKINGS_USER_COMMENT</name>
+        <title>Comment - User Rankings</title>
+        <description>Can Post Comments to User Rankings</description>
+        <default>true</default>
+        <bit>13</bit>
+    </permission>
+    <permission>
+        <name>POLL_CREATE</name>
+        <title>Create Polls</title>
+        <description>Can Create Polls</description>
+        <default>true</default>
+        <bit>14</bit>
+    </permission>
+    <permission>
+        <name>POLL_RESPOND</name>
+        <title>Respond - Polls</title>
+        <description>Can Respond to Polls</description>
+        <default>true</default>
+        <bit>15</bit>
+    </permission>
+    <permission>
+        <name>POLL_COMMENT</name>
+        <title>Comment - Polls</title>
+        <description>Can Post Comments to Polls</description>
+        <default>true</default>
+        <bit>16</bit>
+    </permission>
+    <permission>
+        <name>CHAT_COMMENT</name>
+        <title>Chat - League</title>
+        <description>Can Post to League Chat</description>
+        <default>true</default>
+        <bit>17</bit>
+    </permission>
+    <permission>
+        <name>TRADE_INITIATE</name>
+        <title>Initiate Trades</title>
+        <description>Can Initiate Trades</description>
+        <default>true</default>
+        <bit>18</bit>
+    </permission>
+    <permission>
+        <name>TRADE_ACCEPT</name>
+        <title>Accept Trades</title>
+        <description>Can Accept Trades</description>
+        <default>true</default>
+        <bit>19</bit>
+    </permission>
+    <permission>
+        <name>TRADE_APPROVE</name>
+        <title>Approve Trades</title>
+        <description>Can Approve Trades</description>
+        <default>false</default>
+        <bit>20</bit>
+    </permission>
+    <permission>
+        <name>EVENT_CREATE</name>
+        <title>Create Events</title>
+        <description>Can Create Events</description>
+        <default>false</default>
+        <bit>21</bit>
+    </permission>
+    <permission>
+        <name>EVENT_RESPOND</name>
+        <title>Respond - Events</title>
+        <description>Can Respond to Events</description>
+        <default>true</default>
+        <bit>22</bit>
+    </permission>
+    <permission>
+        <name>EVENT_COMMENT</name>
+        <title>Comment - Events</title>
+        <description>Can Post Comments to Events</description>
+        <default>true</default>
+        <bit>23</bit>
+    </permission>
+    <permission>
+        <name>REQUEST_CREATE</name>
+        <title>Request Rule Change</title>
+        <description>Can Create Rule Change Requests</description>
+        <default>true</default>
+        <bit>24</bit>
+    </permission>
+    <permission>
+        <name>REQUEST_COMMENT</name>
+        <title>Comment on Rule Change Requests</title>
+        <description>Can Comment on Rule Change Requests</description>
+        <default>true</default>
+        <bit>25</bit>
+    </permission>
+    <permission>
+        <name>ISSUE_CREATE</name>
+        <title>Report Website Issue</title>
+        <description>Can Report Website Issues</description>
+        <default>true</default>
+        <bit>26</bit>
+    </permission>
+</permissions>

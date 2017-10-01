@@ -216,6 +216,14 @@
                     'link' => url('/issue/create')
                 ])
             @endcomponent
+            @if(Gate::allows('access-admin-portal'))
+                @include('menu.treeview.default', [  
+                    'id' => 'admin',
+                    'icon' => 'fa fa-lock', 
+                    'name' => 'Admin Portal',
+                    'link' => url('/admin')
+                ])
+            @endif
         </ul>
     </section>
     <!-- /.sidebar -->

@@ -62,11 +62,11 @@
         <body class="hold-transition skin-blue sidebar-mini sidebar-collapse">
     @endif
         <div id="app" class="wrapper">
-            @include('layout.header')
+            @include('layout.admin-header')
 
             @if(auth()->user())
                 <!-- Display Menu Sidebar -->
-                @include('menu.sidebar')
+                @include('menu.admin-sidebar')
             @endif
 
             <!-- Content Wrapper. Contains page content -->
@@ -81,7 +81,7 @@
                         @yield('pagetitle')
 
                         <ol class="breadcrumb">
-                            <li><a href="{{url('/home')}}"><i class="fa fa-dashboard"></i> Home</a></li>
+                            <li><a href="{{url('/admin')}}"><i class="fa fa-lock"></i> Admin Portal</a></li>
                             
                             <!-- Dynamic BreadCrumb List -->
                             @yield('breadcrumb')

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Helpers\Models\LeagueHelper;
 
+use App\User;
 use App\Models\Resource\Players\Player as SystemPlayer;
 
 class League extends Model
@@ -43,6 +44,10 @@ class League extends Model
 
     public function teams(){
         return $this->hasMany(Team::class);
+    }
+
+    public function users(){
+        return $this->hasManyThrough(User::class, Team::class, 'league_id', 'id', 'id', 'user_id');
     }
 
     public function players(){

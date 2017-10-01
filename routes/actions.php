@@ -14,6 +14,7 @@
 |
 */
 
+include_once('actionroutes\admin.php');
 include_once('actionroutes\trade.php');
 include_once('actionroutes\league.php');
 include_once('actionroutes\update.php');

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
-use App\Resources\UserPermissions;
+use App\Resources\Common\Permissions\UserPermissions;
 
 class Permission extends Model
 {

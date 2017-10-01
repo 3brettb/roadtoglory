@@ -17,6 +17,10 @@ Route::get('/test', function(){
 
 });
 
-Route::get('/testjs', function(){
+Route::get('/test/js', function(){
     return view('testing.js');
+})->middleware('web');
+
+Route::get('/test/socket', function(){
+    return view('testing.socket');
 })->middleware('web');

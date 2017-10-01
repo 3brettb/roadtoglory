@@ -29,6 +29,11 @@ class Player extends Model
         return $string;
     }
 
+    public function toString()
+    {
+        return $this->display("{F} {L}, {P} {N}");
+    }
+
     public function image(){
         return url("http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/$this->esbid.png");
     }
